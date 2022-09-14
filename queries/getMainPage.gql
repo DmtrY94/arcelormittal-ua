@@ -1,0 +1,22 @@
+query getMainPage($locale: LanguageCodeEnum!) {
+  getMainPage: pageBy(uri: "holovna") {
+    translation(language: $locale) {
+      id
+      title
+      slug
+      mainpage {
+        herovideoblock {
+          title
+          description
+          videolink {
+            mediaItemUrl
+          }
+          fieldGroupName
+        }
+      }
+      blocks {
+        dynamicContent
+      }
+    }
+  }
+}

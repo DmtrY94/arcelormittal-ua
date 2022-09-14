@@ -1,0 +1,31 @@
+query getPages($uri: String, $locale: LanguageCodeEnum!) {
+  getPages: pageBy(uri: $uri) {
+    translation(language: $locale) {
+      id
+      title
+      date
+      slug
+      featuredImage {
+        node {
+          sourceUrl(size: _1536X1536)
+          uri
+          mediaItemUrl
+          caption
+          altText
+        }
+      }
+      blocks {
+        ... on CoreCoverBlock {
+          dynamicContent
+          attributes {
+            ... on CoreCoverBlockAttributes {
+              useFeaturedImage
+              url
+              contentPosition
+            }
+          }
+        }
+      }
+    }
+  }
+}

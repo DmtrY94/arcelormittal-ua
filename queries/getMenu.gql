@@ -1,0 +1,11 @@
+query getMenu($locale: LanguageCodeFilterEnum,) {
+  getMenu: menuItems(where: {language: $locale, location: MENU_1}) {
+    edges {
+      node {
+        id
+        label
+        path
+      }
+    }
+  }
+}
