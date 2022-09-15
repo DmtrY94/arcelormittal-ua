@@ -1,6 +1,9 @@
 <template>
   <header class="header">
-    <div class="sticky-header header-desktop header-desktop--dark">
+    <div
+      class="sticky-header header-desktop header-desktop--dark"
+      :class="{ 'header-desktop--light': isOpen }"
+    >
       <div class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
           <TheLogoColor />
@@ -8,9 +11,11 @@
         <nav class="header-navigation">
           <ul class="header-navigation__list">
             <li
-              v-for="item in getMenu"
-              :key="item.id"
+              v-for="item in menuParent"
+              :key="item.node.id"
               class="header-navigation__item"
+              v-on:mouseover="mouseover(item.node.id)"
+              v-on:mouseleave="mouseleave"
             >
               <NuxtLink
                 :to="localePath(item.node.path)"
@@ -42,6 +47,12 @@
         </div>
       </div>
     </div>
+    <MoleculesMenuDesktop
+      v-for="item in menuParent"
+      :key="item.node.id"
+      :is-open="isOpen"
+      :menu-parent="item"
+    />
   </header>
 </template>
 <script>
@@ -50,7 +61,8 @@ import getMenu from '@/queries/getMenu'
 export default {
   data() {
     return {
-      isOpen: false,
+      isOpen: null,
+      getMenu: [],
     }
   },
   apollo: {
@@ -82,14 +94,12 @@ export default {
       }
       scrollPos = windowY
     },
-    reload() {
-      this.$router.push(this.switchLocalePath('en'))
-    },
-    mouseover() {
-      this.isOpen = true
+    mouseover(paramID) {
+      console.log(paramID)
+      this.isOpen = paramID
     },
     mouseleave() {
-      this.isOpen = true
+      this.isOpen = false
     },
     staggering() {
       const gsap = this.$gsap
@@ -114,6 +124,9 @@ export default {
   computed: {
     availableLocales() {
       return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+    menuParent() {
+      return this.getMenu.filter((i) => i.node.parentId === null)
     },
   },
   mounted() {
@@ -147,7 +160,7 @@ export default {
 .header-desktop {
   display: flex;
   align-items: center;
-  background: rgba(21, 21, 21, 0.65);
+  background: rgba(21, 21, 21, 0.35);
   border-bottom: 2px solid var(--color-primary);
   height: 76px;
   width: 100%;
@@ -165,6 +178,7 @@ export default {
 }
 .header-desktop--light {
   background: #ffffff;
+  transition: all 0.3s;
   .logo-shape {
     color: var(--color-primary);
   }
@@ -182,7 +196,7 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  overflow: hidden;
+  //overflow: hidden;
 }
 .header-navigation {
   display: flex;
