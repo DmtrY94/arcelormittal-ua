@@ -35,17 +35,18 @@
             @mouseover="mousechild(childItem.node.id)"
             @mouseleave="mouseleave"
           >
-            <NuxtLink :to="childItem.node.path" class="header-menu__link">{{
-              childItem.node.label
-            }} {{childItem.node.childItems.edges.length}}</NuxtLink>
+            <NuxtLink :to="childItem.node.path" class="header-menu__link">
+              <span> {{ childItem.node.label }}</span>
+              <span v-if="childItem.node.childItems.edges.length != 0" class="header-menu__icon">
+                <TheArrow />
+              </span>
+            </NuxtLink>
             <div class="test">
               <ul>
-                
                 <li
                   v-for="item in childItem.node.childItems.edges"
                   :key="item.node.id"
                 >
-                  {{ item }}
                   {{ isOpenChild }}
                 </li>
               </ul>
@@ -114,9 +115,13 @@ export default {
 .header-menu__link {
   padding: 8px 32px 8px 8px;
   color: #151515;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: 100;
+}
+.header-menu__icon {
+  margin-left: 24px;
 }
 .menu-desktop-heading__text {
   display: block;
@@ -132,7 +137,7 @@ export default {
   font-size: 18px;
 }
 .test {
-  position: absolute;
+  position: relative;
   right: 0;
   top: 0;
   width: 100%;
