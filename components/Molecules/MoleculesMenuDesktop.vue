@@ -5,10 +5,6 @@
     v-if="isOpen === menuParent.node.id"
     class="header-menu menu-desktop"
     :class="{ 'menu-desktop--active': isOpen }"
-    v-gsap.fromTo="[
-      { opacity: 0, y: -150 },
-      { opacity: 1, y: 0, duration: 0.2 },
-    ]"
   >
     <div class="container">
       <div class="header-menu__inner">
@@ -36,10 +32,24 @@
             v-for="childItem in menuParent.node.childItems.edges"
             :key="childItem.id"
             class="header-menu__item"
+            @mouseover="mousechild(childItem.node.id)"
+            @mouseleave="mouseleave"
           >
             <NuxtLink :to="childItem.node.path" class="header-menu__link">{{
               childItem.node.label
-            }}</NuxtLink>
+            }} {{childItem.node.childItems.edges.length}}</NuxtLink>
+            <div class="test">
+              <ul>
+                
+                <li
+                  v-for="item in childItem.node.childItems.edges"
+                  :key="item.node.id"
+                >
+                  {{ item }}
+                  {{ isOpenChild }}
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -52,21 +62,29 @@ export default {
     menuParent: {},
     isOpen: {},
   },
-  mounted() {
-    this.staggering()
+  data() {
+    return {
+      isOpenChild: null,
+    }
   },
   methods: {
     closeMenu() {
       this.isOpen === null
       console.log(this.isOpen)
     },
-    staggering() {
-      const gsap = this.$gsap
-      gsap.to('.header-menu__item', {
-        x: 300,
-        stagger: 1,
-      })
+    mousechild(paramID) {
+      console.log(paramID)
+      this.isOpenChild = paramID
     },
+    mouseleave() {
+      window.clearTimeout(this.$options.valueTimeOut)
+      this.$options.valueTimeOut = window.setTimeout(() => {
+        this.isOpenChild = null
+      }, 200)
+    },
+  },
+  mounted() {
+    console.log(this.menuParent)
   },
 }
 </script>
@@ -85,6 +103,7 @@ export default {
 }
 .header-menu__inner {
   display: flex;
+  position: relative;
 }
 .header-menu__column {
   width: 33.3333%;
@@ -111,5 +130,12 @@ export default {
   padding-bottom: 8px;
   border-bottom: 1px solid;
   font-size: 18px;
+}
+.test {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

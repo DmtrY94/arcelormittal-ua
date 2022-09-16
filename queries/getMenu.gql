@@ -12,6 +12,15 @@ query getMenu($locale: LanguageCodeFilterEnum,) {
               id
               label
               path
+              childItems {
+                edges {
+                  node {
+                    id
+                    label
+                    path
+                  }
+                }
+              }
             }
           }
         }
