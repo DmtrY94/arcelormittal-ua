@@ -14,8 +14,8 @@
               v-for="item in menuParent"
               :key="item.node.id"
               class="header-navigation__item"
-              v-on:mouseover="mouseover(item.node.id)"
-              v-on:mouseleave="mouseleave"
+              @mouseover="mouseover(item.node.id)"
+              @mouseleave="mouseleave"
             >
               <NuxtLink
                 :to="localePath(item.node.path)"
@@ -48,6 +48,8 @@
       </div>
     </div>
     <MoleculesMenuDesktop
+      @mouseover="mouseover(item.node.id)"
+      @mouseleave="mouseleave"
       v-for="item in menuParent"
       :key="item.node.id"
       :is-open="isOpen"
@@ -96,10 +98,16 @@ export default {
     },
     mouseover(paramID) {
       console.log(paramID)
-      this.isOpen = paramID
+      window.clearTimeout(this.$options.valueTimeOut)
+      this.$options.valueTimeOut = window.setTimeout(() => {
+        this.isOpen = paramID
+      }, 400)
     },
     mouseleave() {
-      this.isOpen = false
+      window.clearTimeout(this.$options.valueTimeOut)
+      this.$options.valueTimeOut = window.setTimeout(() => {
+        this.isOpen = false
+      }, 200)
     },
     staggering() {
       const gsap = this.$gsap

@@ -84,6 +84,12 @@ export default {
     },
   },
 
+  gsap: {
+    extraPlugins: {
+      scrollTrigger: true
+    }
+  },
+
   apollo: {
     tokenName: "apollo-token", // default value
     tokenExpires: 10, // default 7 days
