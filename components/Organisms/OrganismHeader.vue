@@ -14,8 +14,8 @@
               v-for="item in menuParent"
               :key="item.node.id"
               class="header-navigation__item"
-              @mouseover="mouseover(item.node.id)"
-              @mouseleave="mouseleave"
+              @mouseenter="mouseover(item.node.id, $event)"
+              @mouseleave="mouseleave($event)"
             >
               <NuxtLink
                 :to="localePath(item.node.path)"
@@ -54,6 +54,7 @@
       :key="item.node.id"
       :is-open="isOpen"
       :menu-parent="item"
+      class="testttt"
     />
   </header>
 </template>
@@ -96,18 +97,23 @@ export default {
       }
       scrollPos = windowY
     },
-    mouseover(paramID) {
-      console.log(paramID)
+    mouseover(paramID, event) {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpen = paramID
       }, 400)
+      if (event) {
+        event.target.classList.add('header-navigation__item--active')
+      }
     },
-    mouseleave() {
+    mouseleave(event) {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpen = false
       }, 200)
+      if (event) {
+        event.target.classList.remove('header-navigation__item--active')
+      }
     },
     staggering() {
       const gsap = this.$gsap
@@ -213,6 +219,11 @@ export default {
 .header-navigation__list {
   display: flex;
   align-items: center;
+}
+.header-navigation__item--active {
+  .header-navigation__link {
+    color: var(--color-primary) !important;
+  }
 }
 .header-navigation__link {
   color: #ffffff;

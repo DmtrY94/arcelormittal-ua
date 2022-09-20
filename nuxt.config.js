@@ -80,8 +80,19 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'uk',
+      name: 'ArcelorMittal Kryvyi Rih',
+      short_name: "ArcelorMittal",
+      display: 'standalone'
     },
+    icon: {
+      fileName: 'icon-arc.png',
+    },
+    meta: {
+      /* meta options */
+      appleStatusBarStyle: 'default',
+      name: 'ArcelorMittal Kryvyi Rih',
+    }
   },
 
   gsap: {

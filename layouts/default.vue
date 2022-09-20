@@ -2,10 +2,12 @@
   <div class="layout">
     <OrganismHeader />
     <OrganismsMenu />
-    <Nuxt />
+    <main class="page-content">
+      <Nuxt />
+    </main>
+    <OrganismsFooter />
   </div>
 </template>
 <script>
-export default {
-}
+export default {}
 </script>

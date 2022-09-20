@@ -1,9 +1,7 @@
 <template>
   <div v-if="getMainPage">
     <OrganismHeroMain :heading="getMainPage.mainpage" />
-    <div  style="height: 1000px">
-    {{getMainPage}}
-    </div>
+    <OrganismsBlocks :blocks="getMainPage.blocks" />
   </div>
 </template>
 

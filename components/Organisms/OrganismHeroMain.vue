@@ -2,9 +2,11 @@
   <section v-if="heading.herovideoblock" class="section-hero-home">
     <div class="container">
       <div class="section-hero-home__center">
-        <h1 class="section-hero-home__title">{{heading.herovideoblock.title}}</h1>
+        <h1 class="section-hero-home__title">
+          {{ heading.herovideoblock.title }}
+        </h1>
         <p class="section-hero-home__description">
-          {{heading.herovideoblock.description}}
+          {{ heading.herovideoblock.description }}
         </p>
       </div>
     </div>
@@ -28,6 +30,29 @@
 export default {
   props: {
     heading: {},
+  },
+  mounted() {
+    this.boxRotation()
+  },
+
+  methods: {
+    boxRotation() {
+      const gsap = this.$gsap
+      gsap.fromTo(
+        '.section-hero-home__title',
+        {
+          y: 50,
+          opacity: 0,
+          scale: 0.9,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.65,
+        }
+      )
+    },
   },
 }
 </script>
