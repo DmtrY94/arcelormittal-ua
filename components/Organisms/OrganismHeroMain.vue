@@ -41,15 +41,13 @@ export default {
       gsap.fromTo(
         '.section-hero-home__title',
         {
-          y: 50,
+          x: -50,
           opacity: 0,
-          scale: 0.9,
         },
         {
-          y: 0,
+          x: 0,
           opacity: 1,
-          scale: 1,
-          duration: 0.65,
+          duration: 0.35,
         }
       )
     },

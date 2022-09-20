@@ -18,13 +18,14 @@
             <p class="menu-desktop-heading__text">
               ArcelorMittal Mines and Infrastructure Canada
             </p>
-            <NuxtLink
-              :to="menuParent.node.path"
-              class="menu-desktop-heading__link"
-              @click="closeMenu()"
-            >
-              Перейти на сторінку
-            </NuxtLink>
+            <div @click="$emit('mouseleave')">
+              <NuxtLink
+                :to="menuParent.node.path"
+                class="menu-desktop-heading__link"
+              >
+                Перейти на сторінку
+              </NuxtLink>
+            </div>
           </div>
           <ul class="header-menu__list">
             <li
@@ -33,6 +34,7 @@
               class="header-menu__item"
               @mouseover="mousechild(childItem.node.id)"
               @mouseleave="mouseleave"
+              @click="$emit('mouseleave')"
             >
               <NuxtLink :to="childItem.node.path" class="header-menu__link">
                 <span> {{ childItem.node.label }}</span>
@@ -46,7 +48,7 @@
             </li>
           </ul>
           <MoleculesMenuChildDesktop
-            @mouseover="mouseover(childItem.node.id)"
+            @mouseover="mousechild(childItem.node.id)"
             @mouseleave="mouseleave"
             v-for="childItem in menuParent.node.childItems.edges"
             :key="childItem.id"
@@ -71,8 +73,8 @@ export default {
   },
   methods: {
     closeMenu() {
-      this.isOpen === null
-      console.log(this.isOpen)
+      this.isOpenChild === null
+      console.log(this.isOpenChild)
     },
     mousechild(paramID) {
       window.clearTimeout(this.$options.valueTimeOut)
@@ -84,7 +86,7 @@ export default {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = null
-      }, 200)
+      }, 700)
     },
     beforeEnter(el) {
       this.$gsap.set(el, {
