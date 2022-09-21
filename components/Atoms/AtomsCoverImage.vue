@@ -1,7 +1,7 @@
 <template>
-  <section v-if="image" class="cover-image">
+  <section class="cover-image">
     <div class="cover-image__container">
-      <figure v-if="image.node.sourceUrl" class="cover-image__figure">
+      <figure v-if="image" class="cover-image__figure">
         <nuxt-picture
           :src="image.node.sourceUrl"
           loading="lazy"
@@ -20,6 +20,19 @@
           ></span>
         </figcaption>
       </figure>
+      <figure v-else>
+         <nuxt-picture
+          src="/images/images-null.png"
+          loading="lazy"
+          class="cover-image__picture"
+          alt="test"
+          :imgAttrs="{
+            class: 'cover-image__img',
+            style: 'display:block',
+            'data-my-data': 'my-value',
+          }"
+        />
+      </figure>
     </div>
     <div class="hero-content">
       <div class="container">
@@ -36,6 +49,27 @@ export default {
     title: String,
     image: Object,
   },
+  mounted() {
+    this.titleAnimation()
+  },
+
+  methods: {
+    titleAnimation() {
+      const gsap = this.$gsap
+      gsap.fromTo(
+        '.hero-content__title',
+        {
+          x: -50,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.35,
+        }
+      )
+    },
+  },
 }
 </script>
 <style lang="scss">
@@ -44,7 +78,7 @@ export default {
   &__container {
     width: 100%;
     height: 100vh;
-    max-height: 810px;
+    max-height: 632px;
     overflow: hidden;
     position: relative;
     z-index: 0;
@@ -85,6 +119,13 @@ export default {
   transform: translateY(-50%);
   &__title {
     color: #fff;
+  }
+}
+@media (max-width: $mobile) {
+  .section-hero-home__title {
+    max-width: 100%;
+    font-size: 50px;
+    line-height: 120%;
   }
 }
 </style>

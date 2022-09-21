@@ -44,6 +44,9 @@
               <TheSearch />
             </NuxtLink>
           </div>
+          <div class="header-toolbar__menu">
+            <TheMenu />
+          </div>
         </div>
       </div>
     </div>
@@ -240,6 +243,9 @@ export default {
   border-right: 1px solid rgba(255, 255, 255, 0.35);
   margin-right: 16px;
 }
+.header-toolbar__menu {
+  display: none;
+}
 .toolbar-text {
   font-size: 16px;
   margin-right: 16px;
@@ -249,6 +255,38 @@ export default {
 .toolbar-search {
   svg {
     display: flex;
+  }
+}
+@media (max-width: $mobile) {
+  .header {
+  }
+  .header-navigation {
+    display: none;
+  }
+  .header-desktop {
+    height: 64px;
+  }
+  .header-desktop__logo {
+    svg {
+      display: flex;
+      width: 86px;
+    }
+  }
+  .header-toolbar__lang {
+    border-right: 0;
+    margin-right: 0;
+  }
+  .header-toolbar__search {
+    margin-right: 16px;
+  }
+  .header-toolbar__menu {
+    display: block;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+    padding-left: 16px;
+    svg {
+      display: flex;
+      color: #fff;
+    }
   }
 }
 </style>
