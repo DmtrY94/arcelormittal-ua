@@ -44,7 +44,7 @@
               <TheSearch />
             </NuxtLink>
           </div>
-          <div class="header-toolbar__menu">
+          <div class="header-toolbar__menu" @click="openMenuMobile()">
             <TheMenu />
           </div>
         </div>
@@ -117,6 +117,9 @@ export default {
       if (event) {
         event.target.classList.remove('header-navigation__item--active')
       }
+    },
+    openMenuMobile() {
+      this.isOpen = true
     },
     staggering() {
       const gsap = this.$gsap

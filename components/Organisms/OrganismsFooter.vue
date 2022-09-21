@@ -4,12 +4,23 @@
       <div class="footer-block">
         <div class="footer-block__left">
           <div class="footer-block__logo">
-            <NuxtLink :to="localePath('/')"><TheLogoColor /></NuxtLink>
+            <NuxtLink :to="localePath('/')"><TheFooterLogo /></NuxtLink>
           </div>
-          <div class="footer-block__phone"></div>
-            <AtomButton button-name="Гарячі лінії" button-with="100%" button-link="/phone" type="white" />
-          <div class="">
-            <p>©2021 ArcelorMittal Kryviy Rih</p>
+          <div class="footer-block__bottom">
+            <AtomButton
+              button-name="Гарячі лінії"
+              button-with="100%"
+              button-link="/phone"
+              type="white"
+              class="footer-block-left__button"
+            />
+            <div class="">
+              <p class="footer-adress">
+                ПАТ «АрселорМіттал Кривий Ріг» 50095, Україна, Дніпропетровська
+                область, Кривий Ріг, вул. Криворіжсталі (Орджонікідзе), 1
+              </p>
+              <p class="footer-text">©{{ date }} ArcelorMittal Kryviy Rih</p>
+            </div>
           </div>
         </div>
         <div class="footer-block__right">
@@ -50,6 +61,11 @@
 <script>
 import getMenu from '@/queries/getMenu'
 export default {
+  data() {
+    return {
+      date: new Date().toISOString().slice(0, 4),
+    }
+  },
   apollo: {
     getMenu: {
       prefetch: true,
@@ -77,16 +93,20 @@ export default {
   padding: 76px 0;
   &-block {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     &__logo {
       padding-bottom: 20px;
+      flex-grow: 1;
       svg {
         color: #fff;
       }
     }
     &__left {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
       width: 35%;
-      margin-right: 30px;
+      margin-right: 64px;
     }
     &__right {
       display: grid;
@@ -100,6 +120,9 @@ export default {
       width: 65%;
     }
   }
+}
+.footer-block-left__button {
+  margin-bottom: 36px;
 }
 .footer-menu__list {
   &:nth-child(1n) {
@@ -127,8 +150,6 @@ export default {
   color: #ffffff;
   font-size: 18px;
   font-weight: 800;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #ffffff;
 }
 .footer-menu__item {
   display: block;
@@ -137,5 +158,26 @@ export default {
 .footer-menu__link {
   color: #f0f0f0a6;
   font-size: 14px;
+}
+.footer-adress {
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+.footer-text {
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.45);
+}
+@media (max-width: $mobile) {
+  .footer-block {
+    flex-direction: column;
+    &__right {
+      display: block;
+    }
+  }
 }
 </style>
