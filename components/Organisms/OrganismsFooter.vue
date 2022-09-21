@@ -6,6 +6,11 @@
           <div class="footer-block__logo">
             <NuxtLink :to="localePath('/')"><TheLogoColor /></NuxtLink>
           </div>
+          <div class="footer-block__phone"></div>
+            <AtomButton button-name="Гарячі лінії" button-with="100%" button-link="/phone" type="white" />
+          <div class="">
+            <p>©2021 ArcelorMittal Kryviy Rih</p>
+          </div>
         </div>
         <div class="footer-block__right">
           <div
@@ -22,11 +27,19 @@
               <li
                 v-for="childItem in item.node.childItems.edges"
                 :key="childItem.node.id"
+                class="footer-menu__item"
               >
-                <NuxtLink :to="localePath(childItem.node.path)">{{
-                  childItem.node.label
-                }}</NuxtLink>
+                <NuxtLink
+                  :to="localePath(childItem.node.path)"
+                  class="footer-menu__link"
+                  >{{ childItem.node.label }}</NuxtLink
+                >
               </li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li><NuxtLink to="/contacts">Контакти</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -66,25 +79,63 @@ export default {
     display: flex;
     align-items: flex-start;
     &__logo {
+      padding-bottom: 20px;
       svg {
         color: #fff;
       }
     }
     &__left {
-      width: 25%;
+      width: 35%;
+      margin-right: 30px;
     }
     &__right {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'first four'
+        'second five'
+        'third six';
+      grid-gap: 32px 30px;
       flex-wrap: wrap;
-      width: 75%;
+      width: 65%;
     }
   }
 }
 .footer-menu__list {
-  width: 50%;
-  margin-bottom: 36px;
+  &:nth-child(1n) {
+    grid-area: first;
+  }
+  &:nth-child(2n) {
+    grid-area: second;
+  }
+  &:nth-child(3n) {
+    grid-area: third;
+  }
+  &:nth-child(4n) {
+    grid-area: four;
+  }
+  &:nth-child(5n) {
+    grid-area: five;
+  }
+  &:nth-child(6n) {
+    grid-area: six;
+  }
 }
 .footer-menu__title {
+  display: inline-block;
   margin-bottom: 16px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ffffff;
+}
+.footer-menu__item {
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-menu__link {
+  color: #f0f0f0a6;
+  font-size: 14px;
 }
 </style>
