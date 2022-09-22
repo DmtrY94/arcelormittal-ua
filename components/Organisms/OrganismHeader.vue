@@ -2,14 +2,14 @@
   <header class="header">
     <div
       class="sticky-header header-desktop header-desktop--dark"
-      :class="{ 'header-desktop--light': isOpen }"
+      :class="{ 'header-desktop--light': isOpen, 'header-desktop--light': isSearch }"
     >
       <div class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
           <TheLogoColor />
         </NuxtLink>
         <nav class="header-navigation">
-          <ul class="header-navigation__list">
+          <ul v-if="!isSearch" class="header-navigation__list">
             <li
               v-for="item in menuParent"
               :key="item.node.id"
@@ -25,6 +25,9 @@
               </NuxtLink>
             </li>
           </ul>
+          <div v-else>
+            search
+          </div>
         </nav>
         <div class="header-toolbar">
           <div
@@ -40,9 +43,12 @@
             >
           </div>
           <div class="header-toolbar__search">
-            <NuxtLink :to="localePath('/search')" class="toolbar-search">
+            <span v-if="isSearch" @click="closeSearch()">
+              <TheClose />
+            </span>
+            <span v-else @click="openSearch()" class="toolbar-search">
               <TheSearch />
-            </NuxtLink>
+            </span>
           </div>
           <div class="header-toolbar__menu" @click="openMenuMobile()">
             <TheMenu />
@@ -68,6 +74,7 @@ export default {
   data() {
     return {
       isOpen: null,
+      isSearch: false,
       getMenu: [],
     }
   },
@@ -120,6 +127,12 @@ export default {
     },
     openMenuMobile() {
       this.isOpen = true
+    },
+    openSearch() {
+      this.isSearch = true
+    },
+    closeSearch() {
+      this.isSearch = false
     },
     staggering() {
       const gsap = this.$gsap

@@ -1,3 +1,5 @@
 <template>
-    <div>TheSearch</div>
+    <div>
+        <OrganismsHeroSearch />
+    </div>
 </template>
