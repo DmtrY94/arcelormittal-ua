@@ -39,13 +39,14 @@
               autocomplete="off"
               @keyup.enter="submitSearch"
             />
+            <span
+              v-show="searchText"
+              @click="clearInput"
+              class="hero-search-container__clear"
+            >
+              <TheClose />
+            </span>
           </div>
-          <span
-            v-show="searchText"
-            @click="clearInput"
-            class="hero-search-container__clear"
-            ><TheClose
-          /></span>
         </nav>
         <div class="header-toolbar">
           <div
@@ -113,10 +114,14 @@ export default {
   },
   methods: {
     submitSearch() {
-      this.$nuxt.$options.router.push(this.localePath({
-        name: 'search',
-        query: { searchText: this.searchText },
-      }))
+      this.$nuxt.$options.router.push(
+        this.localePath({
+          name: 'search',
+          query: { searchText: this.searchText },
+        })
+      )
+      this.isSearch = false
+      this.searchText = ''
     },
     clearInput() {
       this.searchText = ''
