@@ -2,7 +2,10 @@
   <header class="header">
     <div
       class="sticky-header header-desktop header-desktop--dark"
-      :class="{ 'header-desktop--light': isOpen, 'header-desktop--light': isSearch }"
+      :class="{
+        'header-desktop--light': isOpen,
+        'header-desktop--light': isSearch,
+      }"
     >
       <div class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
@@ -26,8 +29,23 @@
             </li>
           </ul>
           <div v-else>
-            search
+            <input
+              type="search"
+              placeholder="Пошук"
+              class="input hero-search__input"
+              name="searchText"
+              id="searchText"
+              v-model="searchText"
+              autocomplete="off"
+              @keyup.enter="submitSearch"
+            />
           </div>
+          <span
+            v-show="searchText"
+            @click="clearInput"
+            class="hero-search-container__clear"
+            ><TheClose
+          /></span>
         </nav>
         <div class="header-toolbar">
           <div
@@ -76,6 +94,7 @@ export default {
       isOpen: null,
       isSearch: false,
       getMenu: [],
+      searchText: '',
     }
   },
   apollo: {
@@ -93,6 +112,15 @@ export default {
     },
   },
   methods: {
+    submitSearch() {
+      this.$nuxt.$options.router.push(this.localePath({
+        name: 'search',
+        query: { searchText: this.searchText },
+      }))
+    },
+    clearInput() {
+      this.searchText = ''
+    },
     handleSCroll() {
       let scrollPos = 70
       const nav = document.querySelector('.sticky-header')
