@@ -73,3 +73,8 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.menu-child-item__link {
+  padding: 8px 32px 8px 8px;
+}
+</style>

@@ -27,34 +27,38 @@
               </NuxtLink>
             </div>
           </div>
-          <ul class="header-menu__list">
-            <li
-              v-for="childItem in menuParent.node.childItems.edges"
-              :key="childItem.id"
-              class="header-menu__item"
+          <div class="header-menu__column">
+            <ul class="header-menu__list">
+              <li
+                v-for="childItem in menuParent.node.childItems.edges"
+                :key="childItem.id"
+                class="header-menu__item"
+                @mouseover="mousechild(childItem.node.id)"
+                @mouseleave="mouseleave"
+                @click="$emit('mouseleave')"
+              >
+                <NuxtLink :to="childItem.node.path" class="header-menu__link">
+                  <span> {{ childItem.node.label }}</span>
+                  <span
+                    v-if="childItem.node.childItems.edges.length != 0"
+                    class="header-menu__icon"
+                  >
+                    <TheArrow />
+                  </span>
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
+          <div class="header-menu__column">
+            <MoleculesMenuChildDesktop
               @mouseover="mousechild(childItem.node.id)"
               @mouseleave="mouseleave"
-              @click="$emit('mouseleave')"
-            >
-              <NuxtLink :to="childItem.node.path" class="header-menu__link">
-                <span> {{ childItem.node.label }}</span>
-                <span
-                  v-if="childItem.node.childItems.edges.length != 0"
-                  class="header-menu__icon"
-                >
-                  <TheArrow />
-                </span>
-              </NuxtLink>
-            </li>
-          </ul>
-          <MoleculesMenuChildDesktop
-            @mouseover="mousechild(childItem.node.id)"
-            @mouseleave="mouseleave"
-            v-for="childItem in menuParent.node.childItems.edges"
-            :key="childItem.id"
-            :is-open="isOpenChild"
-            :menu-parent="childItem"
-          />
+              v-for="childItem in menuParent.node.childItems.edges"
+              :key="childItem.id"
+              :is-open="isOpenChild"
+              :menu-parent="childItem"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -80,13 +84,13 @@ export default {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = paramID
-      }, 200)
+      }, 400)
     },
     mouseleave() {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = null
-      }, 700)
+      }, 0)
     },
     beforeEnter(el) {
       this.$gsap.set(el, {
@@ -147,9 +151,9 @@ export default {
 }
 .header-menu__item {
   display: block;
+  padding: 8px 32px 8px 8px;
 }
 .header-menu__link {
-  padding: 8px 32px 8px 8px;
   color: #151515;
   display: flex;
   align-items: center;
@@ -157,7 +161,7 @@ export default {
   font-weight: 100;
 }
 .header-menu__icon {
-  margin-left: 24px;
+  margin-left: 16px;
 }
 .menu-desktop-heading__text {
   display: block;
