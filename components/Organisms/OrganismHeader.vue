@@ -3,15 +3,17 @@
     <div
       class="sticky-header header-desktop header-desktop--dark"
       :class="{
-        'header-desktop--light': isOpen,
-        'header-desktop--light': isSearch,
+        'header-desktop--light': isOpen || isSearch,
       }"
     >
       <div class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
           <TheLogoColor />
         </NuxtLink>
-        <nav class="header-navigation">
+        <nav
+          class="header-navigation"
+          :class="{ 'header-navigation--search': isSearch }"
+        >
           <ul v-if="!isSearch" class="header-navigation__list">
             <li
               v-for="item in menuParent"
@@ -28,11 +30,12 @@
               </NuxtLink>
             </li>
           </ul>
-          <div v-else>
+          <div v-else class="header-search">
+            <TheSearch />
             <input
               type="search"
               placeholder="Пошук"
-              class="input hero-search__input"
+              class="input header-search__input"
               name="searchText"
               id="searchText"
               v-model="searchText"
@@ -62,7 +65,11 @@
             >
           </div>
           <div class="header-toolbar__search">
-            <span v-if="isSearch" @click="closeSearch()">
+            <span
+              v-if="isSearch"
+              @click="closeSearch()"
+              class="toolbar-search__close"
+            >
               <TheClose />
             </span>
             <span v-else @click="openSearch()" class="toolbar-search">
@@ -254,6 +261,9 @@ export default {
   .header-navigation__link {
     color: var(--color);
   }
+  .header-toolbar__lang {
+    border-right: 1px solid #000;
+  }
 }
 .sticky-header {
   position: fixed;
@@ -267,6 +277,10 @@ export default {
 .header-navigation {
   display: flex;
   align-items: center;
+  &--search {
+    width: 100%;
+    margin: 0 48px;
+  }
 }
 .header-navigation__list {
   display: flex;
@@ -301,11 +315,44 @@ export default {
   text-transform: uppercase;
   font-weight: 800;
 }
+.header-toolbar__search {
+  cursor: pointer;
+}
 .toolbar-search {
+  &__close {
+    cursor: pointer;
+    display: flex;
+  }
   svg {
     display: flex;
   }
 }
+
+.header-search {
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__input {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    color: #000;
+    font-size: 16px;
+    padding: 0 30px 0 16px;
+    border-radius: 0;
+    outline: none;
+  }
+}
+
+.hero-search-container__clear {
+  display: flex;
+  cursor: pointer;
+}
+
 @media (max-width: $mobile) {
   .header {
   }
