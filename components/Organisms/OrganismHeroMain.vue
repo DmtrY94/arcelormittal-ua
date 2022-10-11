@@ -1,5 +1,11 @@
 <template>
-  <section v-if="heading.herovideoblock" class="section-hero-home">
+  <section
+    v-if="heading.herovideoblock"
+    class="section-hero-home"
+    :style="{
+      backgroundImage: `url(${heading.herovideoblock.videocover.sourceUrl})`,
+    }"
+  >
     <div class="container">
       <div class="section-hero-home__center">
         <h1 class="section-hero-home__title">
@@ -10,6 +16,7 @@
         </p>
       </div>
     </div>
+
     <div class="section-hero-home__wrapper">
       <video
         class="hero-home-wrapper__video"
@@ -55,28 +62,34 @@ export default {
 }
 </script>
 <style lang="scss">
-.section-hero-home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 76px);
-  &__center {
-    position: relative;
-    z-index: 2;
+.section-hero {
+  &-home {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-  }
-  &__wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-  }
-  &__title {
-    max-width: 50%;
-    color: #fff;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 76px);
+    overflow: hidden;
+    &__center {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &__wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+    &__title {
+      max-width: 50%;
+      color: #fff;
+    }
   }
 }
 .hero-home-wrapper {

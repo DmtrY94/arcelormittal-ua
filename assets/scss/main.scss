@@ -256,6 +256,17 @@ h5 {
     line-height: 120%;
 }
 
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.25s;
+}
+
+.page-enter,
+.page-leave-active {
+    opacity: 0;
+  
+}
+
 @media (max-width: $mobile) {
     .container {
         max-width: 100%;

@@ -11,12 +11,27 @@ query getMainPage($locale: LanguageCodeEnum!) {
           videolink {
             mediaItemUrl
           }
+          videocover {
+            sourceUrl(size: _1536X1536)
+            uri
+            mediaItemUrl
+          }
           fieldGroupName
         }
       }
       blocks {
+        attributesJSON
         dynamicContent
+        originalContent
+        saveContent
       }
+      seo {
+        title
+        metaDesc
+        opengraphImage {
+          sourceUrl
+          }
+        }
     }
   }
 }
