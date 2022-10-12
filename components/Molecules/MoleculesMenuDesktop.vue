@@ -147,6 +147,7 @@ export default {
   padding-top: 114px;
   padding-bottom: 48px;
   background: #fff;
+  overflow: hidden;
   box-shadow: 0 5px 5px 0 rgb(0 0 0 / 15%);
 }
 .header-menu__inner {

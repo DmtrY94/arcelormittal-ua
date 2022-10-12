@@ -63,7 +63,7 @@ export default {
       this.$gsap.fromTo(
         '.menu-child-item__link',
         { opacity: 0, x: -25 },
-        { opacity: 1, x: 0, duration: 0.1, stagger: 0.05 }
+        { opacity: 1, x: 0, duration: 0.1, stagger: 0.05, delay: 0.2 }
       )
     },
     leave(el, done) {

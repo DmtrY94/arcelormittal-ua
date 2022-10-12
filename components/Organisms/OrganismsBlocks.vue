@@ -24,6 +24,10 @@ export default {
   .wp-block-media-text {
   }
   .has-media-on-the-right {
+    flex-flow: row-reverse;
+    .wp-block-media-text__content {
+      margin-right: 8.33333%;
+    }
   }
   .is-vertically-aligned-center {
     display: flex;
@@ -32,10 +36,21 @@ export default {
   .has-blue-background-color {
     background: var(--blue);
   }
+  .has-black-background-color {
+    background: #3f3f3f;  
+  }
   .wp-block-media-text__content {
     width: 50%;
     .has-white-color {
       color: #fff;
+    }
+    h3 {
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 120%;
+      display: block;
     }
   }
   .wp-block-media-text__media {
