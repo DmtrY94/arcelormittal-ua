@@ -25,6 +25,7 @@
               <NuxtLink
                 :to="localePath(item.node.path)"
                 class="header-navigation__link"
+                :class="{ 'header-navigation__item--active': isOpen === item.node.id }"
               >
                 {{ item.node.label }}
               </NuxtLink>
@@ -286,10 +287,10 @@ export default {
   display: flex;
   align-items: center;
 }
-.header-navigation__item--active {
-  .header-navigation__link {
+
+.header-navigation__link.header-navigation__item--active {
     color: var(--color-primary) !important;
-  }
+  
 }
 .header-navigation__link {
   color: #ffffff;

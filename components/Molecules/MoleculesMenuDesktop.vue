@@ -37,7 +37,14 @@
                 @mouseleave="mouseleave"
                 @click="$emit('mouseleave')"
               >
-                <NuxtLink :to="childItem.node.path" class="header-menu__link">
+                <NuxtLink
+                  :to="childItem.node.path"
+                  class="header-menu__link"
+                  :class="{
+                    'header-menu__link--active':
+                      isOpenChild === childItem.node.id,
+                  }"
+                >
                   <span> {{ childItem.node.label }}</span>
                   <span
                     v-if="childItem.node.childItems.edges.length != 0"
@@ -84,13 +91,13 @@ export default {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = paramID
-      }, 400)
+      }, 0)
     },
     mouseleave() {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = null
-      }, 0)
+      }, 300)
     },
     beforeEnter(el) {
       this.$gsap.set(el, {
@@ -104,7 +111,7 @@ export default {
         y: 0,
         duration: 0.15,
       }),
-      this.$gsap.fromTo(
+        this.$gsap.fromTo(
           '.header-menu__title',
           { opacity: 0, x: -50 },
           { opacity: 1, x: 0, duration: 0.36, delay: 0.15 }
@@ -149,6 +156,11 @@ export default {
 .header-menu__column {
   width: 33.3333%;
 }
+.header-menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .header-menu__item {
   display: block;
   padding: 8px 32px 8px 8px;
@@ -159,6 +171,9 @@ export default {
   align-items: center;
   font-size: 18px;
   font-weight: 100;
+  &--active {
+    color: var(--color-primary) !important;
+  }
 }
 .header-menu__icon {
   margin-left: 16px;

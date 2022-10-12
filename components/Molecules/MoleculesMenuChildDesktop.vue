@@ -5,9 +5,10 @@
     v-on:leave="leave"
   >
     <div
-      @mouseover="$emit('mousechild')"
+      @mouseover="$emit('mouseover')"
       @mouseleave="$emit('mouseleave')"
       v-if="isOpen === menuParent.node.id"
+      class="menu-child"
     >
       <ul>
         <li
@@ -37,13 +38,15 @@ export default {
   methods: {
     mousechild(paramID) {
       console.log(paramID)
-      this.isOpenChild = paramID
+      this.$options.valueTimeOut = window.setTimeout(() => {
+        this.isOpenChild = paramID
+      }, 0)
     },
     mouseleave() {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = null
-      }, 200)
+      }, 400)
     },
     beforeEnter(el) {
       this.$gsap.set(el, {
@@ -74,6 +77,9 @@ export default {
 }
 </script>
 <style lang="scss">
+.menu-child {
+  height: 100%;
+}
 .menu-child-item__link {
   padding: 8px 32px 8px 8px;
 }
