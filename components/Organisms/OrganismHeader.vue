@@ -175,17 +175,6 @@ export default {
     closeSearch() {
       this.isSearch = false
     },
-    staggering() {
-      const gsap = this.$gsap
-      gsap.fromTo(
-        '.header-navigation__item',
-        {
-          y: -30,
-          opacity: 0,
-        },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.8 }
-      )
-    },
   },
   created() {
     if (process.client) {
@@ -202,24 +191,6 @@ export default {
     menuParent() {
       return this.getMenu.filter((i) => i.node.parentId === null)
     },
-  },
-  mounted() {
-    this.$gsap.fromTo(
-      '.header',
-      { y: -270, opacity: 0 },
-      { opacity: 1, y: 0, duration: 0.8 }
-    )
-    this.$gsap.fromTo(
-      '.header-desktop__logo',
-      { x: -40, opacity: 0, ease: 'myEase' },
-      { opacity: 1, x: 0, duration: 0.8, delay: 0.8 }
-    )
-    this.$gsap.fromTo(
-      '.header-toolbar',
-      { x: 40, opacity: 0, ease: 'myEase' },
-      { opacity: 1, x: 0, duration: 0.8, delay: 0.8 }
-    )
-    this.staggering()
   },
 }
 </script>

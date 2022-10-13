@@ -4,7 +4,6 @@
     <OrganismsMenu />
     <main class="page-content">
       <Nuxt />
-      {{ test }}
     </main>
     <OrganismsFooter />
   </div>

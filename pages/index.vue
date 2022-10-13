@@ -2,7 +2,6 @@
   <div v-if="getMainPage">
     <OrganismHeroMain :heading="getMainPage.mainpage" />
     <OrganismsBlocks :blocks="getMainPage.blocks" />
-
   </div>
 </template>
 
