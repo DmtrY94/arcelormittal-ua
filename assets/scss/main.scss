@@ -266,6 +266,76 @@ h5 {
     opacity: 0;
   
 }
+.wp-block-button {
+    max-width: 300px;
+}
+
+.wp-block-button__link {
+    position: relative;
+    z-index: 0;
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 0 30px;
+    line-height: 72px;
+    height: 72px;
+    color: var(--color);
+    border: 1px solid #ff3700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.5s border;
+    &.has-white-color {
+      border: 1px solid #ffffff;
+      .button-content__name,
+      .button-content__icon {
+        color: #ffffff;
+      }
+    }
+    &.color-style {
+      border: 1px solid #ff3700;
+      .button-content__name {
+        color: #212121;
+      }
+      .button-content__icon {
+        color: #ff3700;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      top: 0;
+      right: -50%;
+      border-radius: inherit;
+      background: linear-gradient(
+        89.92deg,
+        #460a78 -19.92%,
+        #be2878 11.7%,
+        #fc3e44 44.86%,
+        #f58746 66.81%
+      );
+      transition: left 0.65s ease-in-out, right 0.65s ease-in-out,
+        width 0.65s ease-in-out;
+      z-index: -1;
+    }
+    &:hover {
+      color: #ffffff;
+      border: 1px solid transparent;
+    }
+    &:hover .button-content__icon {
+      color: #ffffff;
+    }
+    &:hover:before {
+      left: 0%;
+      width: 150%;
+    }
+  }
+
+
 @media (max-width: $desktop) {
     .container {
         padding: 0 48px;

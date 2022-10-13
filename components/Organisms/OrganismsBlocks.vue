@@ -14,6 +14,13 @@ export default {
   props: {
     blocks: {},
   },
+  mounted() {
+    this.$gsap.fromTo(
+      '.wp-block-media-text',
+      { x: -64, opacity: 0 },
+      { opacity: 1, x: 0, duration: 0.8 }
+    )
+  }
 }
 </script>
 <style lang="scss">
@@ -39,8 +46,14 @@ export default {
   .has-black-background-color {
     background: #3f3f3f;  
   }
+  .has-dark-background-color {
+    background: #5f5f5f;  
+  }
   .wp-block-media-text__content {
+    display: block;
     width: 50%;
+    padding-top: 86px;
+    padding-bottom: 86px;
     .has-white-color {
       color: #fff;
     }
@@ -48,8 +61,9 @@ export default {
       margin-bottom: 24px;
     }
     p {
-      font-size: 16px;
-      line-height: 120%;
+      font-size: 16px !important;
+      color: rgba(255, 255, 255, 0.65) !important;
+      line-height: 150%;
       display: block;
     }
   }
@@ -64,6 +78,9 @@ export default {
       object-fit: cover;
     
     }
+  }
+  .wp-block-buttons {
+    margin-top: 48px;
   }
 }
 </style>
