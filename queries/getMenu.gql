@@ -6,6 +6,9 @@ query getMenu($locale: LanguageCodeFilterEnum,) {
         label
         path
         parentId
+        formenu {
+          menuDescription
+        }
         childItems {
           edges {
             node {

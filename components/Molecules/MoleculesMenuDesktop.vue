@@ -16,7 +16,7 @@
           <div class="header-menu__title header-menu__column">
             <h3>{{ menuParent.node.label }}</h3>
             <p class="menu-desktop-heading__text">
-              ArcelorMittal Mines and Infrastructure Canada
+              {{ menuParent.node.formenu }}
             </p>
             <div @click="$emit('mouseleave')">
               <NuxtLink
@@ -76,6 +76,7 @@ export default {
   props: {
     menuParent: {},
     isOpen: {},
+    locales: {},
   },
   data() {
     return {

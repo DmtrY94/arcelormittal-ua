@@ -1,7 +1,7 @@
 <template>
   <div v-if="getPages" class="site-content">
     <AtomsCoverImage :image="getPages.featuredImage" :title="getPages.title" />
-    {{ getPages }}
+    {{getPages.blocks}}
   </div>
 </template>
 <script>

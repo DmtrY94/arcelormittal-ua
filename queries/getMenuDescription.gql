@@ -1,0 +1,9 @@
+query getMenuDescription($uri: String, $locale: LanguageCodeEnum!) {
+  getMenuDescription: pageBy(uri: $uri) {
+    translation(language: $locale) {
+      formenu {
+        menuDescription
+      }
+    }
+  }
+}

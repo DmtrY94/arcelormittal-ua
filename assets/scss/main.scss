@@ -6,18 +6,6 @@
     --color-text: #000000;
     --color-primary: #ff3700;
     --blue: #0070c0;
-    --color-secondary: rgba(33, 33, 33, 0.8);
-    --bg: #ffffff;
-    --bg-revers: #121212;
-    --bg-secondary: #F8F6F2;
-    --bg-blur: rgba(255, 255, 255, 0.7);
-    --bg-footer: #212121;
-    --bg-gradient-bw: linear-gradient(270deg,
-            #ffffff 3.87%,
-            rgba(255, 255, 255, 0) 96.48%);
-    --bg-gradient-bw-horizontal: linear-gradient(0deg,
-            #ffffff 3.87%,
-            rgba(255, 255, 255, 0) 96.48%);
     --border-color: #212121;
     --border-color-button: #ff3700;
     --border-color-button-revers: #ffffff;
@@ -27,6 +15,15 @@
             #460a78 0%,
             #ff263b 64.19%,
             #fd7f45 100%);
+
+    --padding-8: 8px;
+    --padding-16: 16px;
+    --padding-24: 24px;
+    --padding-32: 32px;
+    --padding-48: 48px;
+    --padding-64: 64px;
+    --padding-80: 80px;
+    --padding-96: 96px;
 }
 
 @font-face {
@@ -336,9 +333,15 @@ h5 {
   }
 
 
+
+//wp setting style
+.has-white-color {
+    color: #ffffff;
+}
+
 @media (max-width: $desktop) {
     .container {
-        padding: 0 48px;
+        //padding: 0 48px;
     }
 }
 @media (max-width: $mobile) {
