@@ -19,18 +19,14 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
         dynamicContent
         originalContent
         saveContent
-        ... on CoreGalleryBlock {
-          __typename
-        innerBlocks {
-          ... on CoreImageBlock {
-            mediaItem {
-              node {
-                link
-              }
-            }
-          }
-        }
+        name
       }
+      seo {
+        title
+        metaDesc
+        opengraphImage {
+          sourceUrl
+        }
       }
     }
   }

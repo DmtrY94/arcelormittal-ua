@@ -24,14 +24,15 @@ query getMainPage($locale: LanguageCodeEnum!) {
         dynamicContent
         originalContent
         saveContent
+        name
       }
       seo {
         title
         metaDesc
         opengraphImage {
           sourceUrl
-          }
         }
+      }
     }
   }
 }

@@ -14,7 +14,7 @@ export default {
       prefetch: true,
       variables() {
         return {
-          uri: this.$route.params.slugPage,
+          uri: `${this.$route.params.slugPage}/${this.$route.params.childSlugPage}`,
           locale: this.$i18n.locale.toUpperCase(),
         }
       },

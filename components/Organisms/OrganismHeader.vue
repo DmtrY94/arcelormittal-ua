@@ -22,13 +22,13 @@
               @mouseenter="mouseover(item.node.id, $event)"
               @mouseleave="mouseleave($event)"
             >
-              <NuxtLink
-                :to="localePath(item.node.path)"
+              <AtomsMenuLink
+                :item="item.node"
                 class="header-navigation__link"
-                :class="{ 'header-navigation__item--active': isOpen === item.node.id }"
-              >
-                {{ item.node.label }}
-              </NuxtLink>
+                :class="{
+                  'header-navigation__item--active': isOpen === item.node.id,
+                }"
+              />
             </li>
           </ul>
           <div v-else class="header-search">
@@ -260,8 +260,7 @@ export default {
 }
 
 .header-navigation__link.header-navigation__item--active {
-    color: var(--color-primary) !important;
-  
+  color: var(--color-primary) !important;
 }
 .header-navigation__link {
   color: #ffffff;
@@ -325,11 +324,22 @@ export default {
   cursor: pointer;
 }
 
+@media (max-width: $tablet) {
+ .header-navigation {
+    display: none;
+  }
+  .header-toolbar__menu {
+    display: block;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+    padding-left: 16px;
+    svg {
+      display: flex;
+      color: #fff;
+    }
+  }
+}
 @media (max-width: $mobile) {
   .header {
-  }
-  .header-navigation {
-    display: none;
   }
   .header-desktop {
     height: 64px;
@@ -347,14 +357,6 @@ export default {
   .header-toolbar__search {
     margin-right: 16px;
   }
-  .header-toolbar__menu {
-    display: block;
-    border-left: 1px solid rgba(255, 255, 255, 0.35);
-    padding-left: 16px;
-    svg {
-      display: flex;
-      color: #fff;
-    }
-  }
+  
 }
 </style>

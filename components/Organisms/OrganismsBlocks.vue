@@ -10,6 +10,8 @@
   </div>
 </template>
 <script>
+import { parse } from 'node-html-parser'
+
 export default {
   props: {
     blocks: {},
@@ -20,6 +22,14 @@ export default {
       { x: -64, opacity: 0 },
       { opacity: 1, x: 0, duration: 0.8 }
     )
+  },
+  computed: {
+    test() {
+      const t = this.blocks.map((m) => m.saveContent)
+      const parrse = parse(t)
+      console.log(parrse)
+      return parrse
+    },
   },
 }
 </script>
@@ -40,14 +50,15 @@ export default {
       margin-left: 0;
     }
   }
-  .is-vertically-aligned-center, .wp-block-columns {
+  .is-vertically-aligned-center,
+  .wp-block-columns {
     display: flex;
     align-items: center;
   }
   .wp-block-columns {
-    padding: 96px 0;
+    padding-top: 96px;
+    padding-bottom: 96px;
     justify-content: space-between;
-    align-items: flex-start !important;
   }
   .has-blue-background-color {
     background: var(--blue);
@@ -62,7 +73,7 @@ export default {
     background: #e1e1e1;
   }
   .has-light-blue-background-color {
-    background: #E6EAEF;
+    background: #e6eaef;
   }
   .wp-block-media-text__content {
     display: block;
@@ -100,6 +111,52 @@ export default {
   }
   .wp-block-buttons {
     margin-top: 48px;
+  }
+}
+
+.container-management {
+  align-items: flex-start !important;
+  .card-management {
+    flex-basis: 0;
+    flex-grow: 1;
+    .wp-block-image {
+      width: 100%;
+      flex: 1;
+      position: relative;
+      &::before {
+        display: block;
+        padding-top: 103.333%;
+        content: '';
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+    }
+  }
+  .card-management__title {
+    margin-top: 24px;
+  }
+  .card-management__position {
+    margin-top: 16px;
+  }
+  .card-management__link {
+    display: inline-block;
+    margin-top: 24px;
+    border-bottom: 1px solid;
+  }
+}
+@media (max-width: $mobile) {
+  .container-management {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit !important;
   }
 }
 </style>

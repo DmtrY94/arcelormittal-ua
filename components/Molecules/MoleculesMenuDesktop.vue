@@ -92,7 +92,7 @@ export default {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = paramID
-      }, 0)
+      }, 10)
     },
     mouseleave() {
       window.clearTimeout(this.$options.valueTimeOut)
