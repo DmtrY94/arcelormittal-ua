@@ -118,10 +118,6 @@ export default {
       default: {
         httpEndpoint: 'https://arc-test.metalurg.online/graphql',
       },
-      alternativeClient: {
-        httpEndpoint: 'https://static.metalurg.online/graphql',
-      }
-
     }
   },
 
