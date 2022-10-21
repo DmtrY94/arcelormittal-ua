@@ -15,11 +15,36 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
         }
       }
       blocks {
-        attributesJSON
-        dynamicContent
-        originalContent
-        saveContent
-        name
+        ... on CoreHeadingBlock {
+          dynamicContent
+          attributes {
+            ... on CoreHeadingBlockAttributes {
+              content
+            }
+          }
+        }
+        ... on CoreGalleryBlock {
+            __typename
+          innerBlocks {
+            ... on CoreImageBlock {
+              mediaItem {
+                node {
+                  link
+                }
+              }
+            }
+          }
+        }
+        ... on CoreParagraphBlock {
+          dynamicContent
+          attributes {
+            ... on CoreParagraphBlockAttributes {
+              align
+              anchor
+              content
+            }
+          }
+        }
       }
       seo {
         title

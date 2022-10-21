@@ -1,0 +1,7 @@
+overwrite: true
+schema: "https://arc-test.metalurg.online/graphql"
+generates:
+  ./fragmentTypes.json:
+    plugins:
+      - introspection
+      

@@ -5,7 +5,13 @@
       :key="block.__typename"
       class="ar-block-container"
     >
-      <div v-html="block.saveContent"></div>
+      <!-- <div v-html="block.saveContent"></div>-->
+      <div v-if="block.__typename == 'CoreParagraphBlock'" class="container">
+        <CoreParagraphBlock :attributes="block.attributes" />
+      </div>
+      <div v-if="block.__typename == 'CoreGalleryBlock'">
+        <CoreGalleryBlock :attributes="block.innerBlocks"/>
+      </div>
     </section>
   </div>
 </template>

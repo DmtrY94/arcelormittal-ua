@@ -31,7 +31,8 @@ export default {
       '~/components',
       '~/components/Organisms',
       '~/components/Atoms',
-      '~/components/Atoms/Icons'
+      '~/components/Atoms/Icons',
+      '~/components/Atoms/Blocks'
     ]
   },
 
@@ -115,9 +116,7 @@ export default {
     authenticationType: "Basic",
     errorHandler: "~/plugins/apollo-error-handler.js",
     clientConfigs: {
-      default: {
-        httpEndpoint: 'https://arc-test.metalurg.online/graphql',
-      },
+      default: '@/graphql/config/config.js'
     }
   },
 
