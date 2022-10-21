@@ -1,8 +1,8 @@
 <template>
-  <div v-if="getMainPage">
+  <main v-if="getMainPage" class="page-content">
     <OrganismHeroMain :heading="getMainPage.mainpage" />
     <OrganismsBlocks :blocks="getMainPage.blocks" />
-  </div>
+  </main>
 </template>
 
 <script>

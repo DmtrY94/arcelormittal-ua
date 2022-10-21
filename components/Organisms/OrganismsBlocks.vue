@@ -1,16 +1,43 @@
 <template>
-  <div>
+  <div class="site-content">
     <section
       v-for="block in blocks"
       :key="block.__typename"
       class="ar-block-container"
     >
       <!-- <div v-html="block.saveContent"></div>-->
-      <div v-if="block.__typename == 'CoreParagraphBlock'" class="container">
+      <div
+        v-if="block.__typename == 'CoreParagraphBlock'"
+        class="container container-sm"
+      >
         <CoreParagraphBlock :attributes="block.attributes" />
       </div>
-      <div v-if="block.__typename == 'CoreGalleryBlock'">
-        <CoreGalleryBlock :attributes="block.innerBlocks"/>
+      <div v-else-if="block.__typename == 'CoreGalleryBlock'">
+        <CoreGalleryBlock :attributes="block.innerBlocks" />
+      </div>
+      <div
+        v-else-if="block.__typename == 'CoreListBlock'"
+        class="container container-sm"
+      >
+        <CoreListBlock :attributes="block.attributes" />
+      </div>
+      <div v-else-if="block.__typename == 'CoreGroupBlock'">
+        <CoreGroupBlock :attributes="block" />
+      </div>
+      <div
+        v-else-if="block.__typename == 'CoreHeadingBlock'"
+        class="container container-sm"
+      >
+        <CoreHeadingBlock :attributes="block.attributes" />
+      </div>
+      <div
+        v-else-if="block.__typename == 'CoreFileBlock'"
+        class="container container-sm"
+      >
+        <CoreFileBlock :attributes="block.attributes" />
+      </div>
+      <div v-else-if="block.__typename == 'CoreQuoteBlock'" class="quote-block">
+        <CoreQuoteBlock :attributes="block.attributes" />
       </div>
     </section>
   </div>
@@ -157,6 +184,10 @@ export default {
     margin-top: 24px;
     border-bottom: 1px solid;
   }
+}
+.quote-block {
+  background-color: #f8f6f2;
+  padding: 48px 0;
 }
 @media (max-width: $mobile) {
   .container-management {

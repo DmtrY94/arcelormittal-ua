@@ -2,9 +2,9 @@
   <div class="layout">
     <OrganismHeader />
     <OrganismsMenu />
-    <main class="page-content">
-      <Nuxt />
-    </main>
+
+    <Nuxt />
+
     <OrganismsFooter />
   </div>
 </template>

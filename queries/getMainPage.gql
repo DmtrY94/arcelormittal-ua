@@ -20,11 +20,22 @@ query getMainPage($locale: LanguageCodeEnum!) {
         }
       }
       blocks {
-        attributesJSON
-        dynamicContent
-        originalContent
-        saveContent
-        name
+        ... on CoreGroupBlock {
+          saveContent
+          attributes {
+            ... on CoreGroupBlockAttributes {
+              align
+              anchor
+              layout
+              style
+              backgroundColor
+              className
+              lock
+              tagName
+              textColor
+            }
+          }
+        }
       }
       seo {
         title

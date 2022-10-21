@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <main class="page-content">
     <OrganismsHeroSearch />
     {{ test }}
-  </div>
+  </main>
 </template>
 <script>
 export default {

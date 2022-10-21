@@ -1,8 +1,8 @@
 <template>
-  <div v-if="getPages" class="site-content">
+  <main v-if="getPages" class="page-content">
     <AtomsCoverImage :image="getPages.featuredImage" :title="getPages.title" />
     <OrganismsBlocks :blocks="getPages.blocks" />
-  </div>
+  </main>
 </template>
 <script>
 import getPages from '@/queries/getPages'

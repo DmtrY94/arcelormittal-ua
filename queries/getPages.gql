@@ -45,6 +45,96 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
             }
           }
         }
+        ... on CoreListBlock {
+          dynamicContent
+          attributes {
+            ... on CoreListBlockAttributes {
+              values
+            }
+          }
+        }
+        ... on CoreImageBlock {
+          dynamicContent
+          attributes {
+            ... on CoreImageBlockAttributes {
+              id
+              url
+              alt
+              caption
+            }
+          }
+        }
+        ... on CoreGroupBlock {
+          saveContent
+          attributes {
+            ... on CoreGroupBlockAttributes {
+              align
+              anchor
+              layout
+              style
+              backgroundColor
+              className
+              lock
+              tagName
+              textColor
+            }
+          }
+        }
+        ... on CoreHeadingBlock {
+          attributes {
+            ... on CoreHeadingBlockAttributes {
+              align
+              anchor
+              content
+              level
+              className
+              backgroundColor
+              fontSize
+              lock
+              placeholder
+              style
+              textAlign
+              textColor
+            }
+          }
+        }
+        ... on CoreFileBlock {
+          attributes {
+            ... on CoreFileBlockAttributes {
+              id
+              downloadButtonText
+              showDownloadButton
+              textLinkHref
+              textLinkTarget
+              anchor
+              className
+              displayPreview
+              align
+              fileId
+              fileName
+              href
+              lock
+              previewHeight
+            }
+          }
+        }
+        ... on CoreQuoteBlock {
+          attributes {
+            ... on CoreQuoteBlockAttributes {
+              align
+              anchor
+              backgroundColor
+              citation
+              className
+              fontSize
+              gradient
+              lock
+              textColor
+              value
+              style
+            }
+          }
+        }
       }
       seo {
         title
