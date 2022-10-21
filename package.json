@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "generate": "graphql-codegen --config codegen.yml",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "graphql-codegen --config codegen.yml",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
     "lint:prettier": "prettier --check .",
