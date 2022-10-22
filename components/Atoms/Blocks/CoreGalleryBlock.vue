@@ -1,6 +1,6 @@
 <template>
-  <div class="test">
-    <div class="swiper">
+  <div class="slider-block">
+    <div class="swiper container">
       <div class="swiper-wrapper">
         <div
           v-for="image in attributes"
@@ -8,17 +8,15 @@
           class="swiper-slide"
         >
           <div class="slider-content">
-            {{ image.mediaItem.node.link }}
             <img :src="image.mediaItem.node.link" alt="" />
           </div>
         </div>
       </div>
-      <!-- If pagination is needed -->
-      <div class="swiper-pagination"></div>
-
-      <!-- If navigation buttons are needed -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="slider-block__controls">
+        <div class="slider-block__next"><TheNextIcon /></div>
+        <div class="swiper-pagination"></div>
+        <div class="slider-block__prev"><TheNextIcon /></div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +33,9 @@ export default {
     // configure Swiper to use modules. The modules were tested with SwiperJS v6.8.4 with NuxtJS v2.15.7
     // previously it was before export default. Moved here for performance issues. Move back in case of problems.
     // add or remove unused modules
+
+
+   
     Swiper.use([Navigation, Pagination, Autoplay])
 
     // init Swiper:
@@ -43,7 +44,11 @@ export default {
       // Optional parameters
       // @see https://swiperjs.com/swiper-api#parameters
       direction: 'horizontal',
-      loop: true,
+      loop: false,
+      slidesPerView: 2,
+      spaceBetween: 30,
+      reverseDirection: true,
+      speed: 300,
       // remove unused modules if needed
       modules: [Navigation, Pagination, Autoplay],
       // Pagination if needed
@@ -58,8 +63,8 @@ export default {
       },
       // Navigation arrows if needed
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.slider-block__next',
+        prevEl: '.slider-block__prev',
       },
       // Configure other options. Not tested
     })
@@ -67,10 +72,53 @@ export default {
 }
 </script>
 <style lang="scss">
-.swiper {
-  height: 300px;
+.slider-block {
+  background: var(--text-secondary);
+  padding: 96px 0;
   overflow: hidden;
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 16px;
+    .swiper-pagination {
+      position: relative;
+    }
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      margin: 0 10px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .swiper-pagination-bullet-active {
+      background: #ffffff;
+    }
+  }
+  &__next {
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 24px;
+    .next-icon-slider {
+      display: flex;
+    }
+  }
+  &__prev {
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    margin-left: 24px;
+    .next-icon-slider {
+      display: flex;
+      transform: rotate(180deg);
+    }
+  }
+}
+.swiper {
   position: relative;
+}
+.swiper-wrapper {
+  align-items: center;
 }
 .swiper-slide {
   align-items: center;
@@ -78,6 +126,10 @@ export default {
   justify-content: center;
 }
 .slider-content {
-  color: #000;
+  position: relative;
+  img {
+    max-width: 100%;
+    max-height: 460px;
+  }
 }
 </style>

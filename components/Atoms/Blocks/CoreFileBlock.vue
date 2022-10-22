@@ -2,7 +2,7 @@
   <div class="file-block text-block-width">
     <div class="file-block__left">
       <div class="file-block__icon"><TheFile /></div>
-      <div class="file-block__name">{{ attributes.fileName }}</div>
+      <div class="file-block__name">{{ attributes.fileName }}.{{ fileType }}</div>
     </div>
     <div class="file-block__right">
       <a :href="attributes.href" target="_blank" class="file-block__download">{{
@@ -15,6 +15,15 @@
 export default {
   props: {
     attributes: {},
+  },
+  computed: {
+    fileType() {
+      const fileName = this.attributes.href
+      const fileSplit = fileName.split('.'); 
+      const fileSplitReverse = fileSplit.reverse();
+      const fileType = fileSplitReverse[0];
+      return fileType
+    },
   },
 }
 </script>
