@@ -21,7 +21,7 @@
         </figcaption>
       </figure>
       <figure v-else>
-         <nuxt-picture
+        <nuxt-picture
           src="/images/images-null.png"
           loading="lazy"
           class="cover-image__picture"
@@ -49,8 +49,10 @@ export default {
     title: String,
     image: Object,
   },
+
   mounted() {
     this.titleAnimation()
+    this.imageAnimation()
   },
 
   methods: {
@@ -69,12 +71,35 @@ export default {
         }
       )
     },
+    imageAnimation() {
+      const gsap = this.$gsap
+      gsap.fromTo(
+        '.cover-image',
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.2,
+        }
+      )
+    },
   },
 }
 </script>
 <style lang="scss">
+.loading-page {
+  height: 500px;
+  position: relative;
+  display: block;
+  background: red;
+}
 .cover-image {
   position: relative;
+  min-height: 500px;
+  background: #000;
   &__container {
     width: 100%;
     height: 100vh;
@@ -119,13 +144,6 @@ export default {
   transform: translateY(-50%);
   &__title {
     color: #fff;
-  }
-}
-@media (max-width: $mobile) {
-  .section-hero-home__title {
-    max-width: 100%;
-    font-size: 50px;
-    line-height: 120%;
   }
 }
 </style>

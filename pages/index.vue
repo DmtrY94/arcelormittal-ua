@@ -1,7 +1,8 @@
 <template>
-  <main v-if="getMainPage" class="page-content">
-    <OrganismHeroMain :heading="getMainPage.mainpage" />
-    <OrganismsBlocks :blocks="getMainPage.blocks" />
+  <main class="page-content">
+    <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
+    <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
+    {{ AllNews }}
   </main>
 </template>
 
@@ -22,10 +23,22 @@ export default {
         return data.getMainPage.translation
       },
     },
+    AllNews: {
+      prefetch: true,
+      query: getMainPage,
+      variables() {
+        return {
+          locale: this.$i18n.locale.toUpperCase(),
+        }
+      },
+      update(data) {
+        return data.AllNews
+      },
+    },
   },
+
   head() {
     return {
-     
       title: this.getMainPage?.seo?.title,
       link: [
         {

@@ -55,7 +55,7 @@ export default {
   ],
 
   image: {
-    domains: ['staticarcelormittalkr.local'],
+    domains: ['arc-test.metalurg.online'],
     screens: {
       xs: 320,
       sm: 640,

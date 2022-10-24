@@ -8,7 +8,16 @@
           class="swiper-slide"
         >
           <div class="slider-content">
-            <img :src="image.mediaItem.node.link" alt="" />
+            <nuxt-picture
+              :src="image.mediaItem.node.link"
+              loading="lazy"
+              class="image-element__picture"
+              :imgAttrs="{
+                class: 'image-element__img',
+                style: 'display:block',
+                'data-my-data': 'my-value',
+              }"
+            />
           </div>
         </div>
       </div>
@@ -34,8 +43,6 @@ export default {
     // previously it was before export default. Moved here for performance issues. Move back in case of problems.
     // add or remove unused modules
 
-
-   
     Swiper.use([Navigation, Pagination, Autoplay])
 
     // init Swiper:

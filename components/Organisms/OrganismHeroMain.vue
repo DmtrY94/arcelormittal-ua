@@ -1,6 +1,7 @@
 <template>
+  <div v-if="$apollo.loading">Loading...</div>
   <section
-    v-if="heading.herovideoblock"
+    v-else-if="heading.herovideoblock"
     class="section-hero-home"
     :style="{
       backgroundImage: `url(${heading.herovideoblock.videocover.sourceUrl})`,

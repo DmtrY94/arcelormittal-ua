@@ -1,7 +1,13 @@
 <template>
   <div class="file-block text-block-width">
     <div class="file-block__left">
-      <div class="file-block__icon"><TheFile /></div>
+      <div class="file-block__icon">
+        <ThePdf v-if="fileType === 'pdf'" />
+        <TheDocs v-else-if="fileType === 'docx'"/>
+        <TheXlsx v-else-if="fileType === 'xlsx'"/>
+        <TheJpg v-else-if="fileType === 'jpg'"/>
+        <TheFile v-else />
+      </div>
       <div class="file-block__name">{{ attributes.fileName }}.{{ fileType }}</div>
     </div>
     <div class="file-block__right">

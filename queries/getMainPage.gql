@@ -46,4 +46,23 @@ query getMainPage($locale: LanguageCodeEnum!) {
       }
     }
   }
+  AllNews: allNews(first: 7, where: {language: UK}) {
+    edges {
+      node {
+        id
+        title
+        slug
+        date
+        featuredImage {
+          node {
+            sourceUrl(size: _1536X1536)
+            uri
+            mediaItemUrl
+            caption
+            altText
+          }
+        }
+      }
+    }
+  }
 }

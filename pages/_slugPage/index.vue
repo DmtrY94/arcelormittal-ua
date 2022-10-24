@@ -1,7 +1,7 @@
 <template>
-  <main v-if="getPages" class="page-content">
-    <AtomsCoverImage :image="getPages.featuredImage" :title="getPages.title" />
-    <OrganismsBlocks :blocks="getPages.blocks" />
+  <main class="page-content">
+    <AtomsCoverImage v-if="getPages" :image="getPages.featuredImage" :title="getPages.title" />
+    <OrganismsBlocks  v-if="getPages" :blocks="getPages.blocks" />
   </main>
 </template>
 <script>
