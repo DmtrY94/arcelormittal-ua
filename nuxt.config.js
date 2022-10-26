@@ -36,6 +36,10 @@ export default {
     ]
   },
 
+  dateFns: {
+    locales: 'uk'
+  },
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
@@ -43,6 +47,7 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     'nuxt-gsap-module',
+    '@nuxtjs/date-fns',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -80,6 +85,18 @@ export default {
       },
     ],
     defaultLocale: 'uk',
+    locales: [
+      {
+        code: 'uk',
+        file: 'uk-UA.js'
+      },
+      {
+        code: 'en',
+        file: 'en-US.js'
+      },
+    ],
+    lazy: true,
+    langDir: 'lang/',
     vueI18n: {
       fallbackLocale: 'uk',
     }

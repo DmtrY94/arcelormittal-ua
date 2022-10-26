@@ -1,6 +1,6 @@
 <template>
   <main class="page-content">
-    <AtomsCoverImage v-if="getPages" :image="getPages.featuredImage" :title="getPages.title" />
+    <AtomsCoverImage v-if="getPages" :image="getPages.featuredImage" :parent="getPages.parent.node" :title="getPages.title" />
     <OrganismsBlocks v-if="getPages" :blocks="getPages.blocks" />
   </main>
 </template>

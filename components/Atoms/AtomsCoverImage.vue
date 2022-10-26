@@ -37,6 +37,7 @@
     <div class="hero-content">
       <div class="container">
         <div class="hero-content__left">
+          <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
           <h1 class="hero-content__title">{{ title }}</h1>
         </div>
       </div>
@@ -48,6 +49,7 @@ export default {
   props: {
     title: String,
     image: Object,
+    parent: {},
   },
 
   mounted() {

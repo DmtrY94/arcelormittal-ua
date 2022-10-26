@@ -15,15 +15,15 @@
         <div class="header-menu__inner">
           <div class="header-menu__title header-menu__column">
             <h3>{{ menuParent.node.label }}</h3>
-            <p class="menu-desktop-heading__text">
-              {{ menuParent.node.formenu }}
+            <p v-if="getMenuDescription" class="menu-desktop-heading__text">
+              {{ getMenuDescription.translation.formenu.menuDescription }}
             </p>
             <div @click="$emit('mouseleave')">
               <NuxtLink
                 :to="menuParent.node.path"
                 class="menu-desktop-heading__link"
               >
-                Перейти на сторінку
+                {{$t('goToPage')}}
               </NuxtLink>
             </div>
           </div>
@@ -72,6 +72,8 @@
   </transition>
 </template>
 <script>
+import getMenuDescription from '@/queries/getMenuDescription'
+
 export default {
   props: {
     menuParent: {},
@@ -82,6 +84,21 @@ export default {
     return {
       isOpenChild: null,
     }
+  },
+  apollo: {
+    getMenuDescription: {
+      prefetch: true,
+      query: getMenuDescription,
+      variables() {
+        return {
+          uri: this.menuslug,
+          locale: this.$i18n.locale.toUpperCase(),
+        }
+      },
+      update(data) {
+        return data.getMenuDescription
+      },
+    },
   },
   methods: {
     closeMenu() {
@@ -130,6 +147,13 @@ export default {
         duration: 0.35,
         onComplete: done,
       })
+    },
+  },
+  computed: {
+    menuslug() {
+      const menuUrl = this.menuParent.node.path
+      const menuSlugRepalce = menuUrl.replace('/', '')
+      return menuSlugRepalce
     },
   },
   mounted() {
@@ -184,6 +208,7 @@ export default {
   display: block;
   margin-top: 22px;
   font-size: 18px;
+  line-height: 150%;
   max-width: 230px;
 }
 .menu-desktop-heading__link {
