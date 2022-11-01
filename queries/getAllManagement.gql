@@ -1,0 +1,26 @@
+query getAllManagement(
+    $locale: LanguageCodeFilterEnum,  
+  ) {
+  getAllManagement: allManagement(first: 100, where: {language: $locale}) {
+    edges {
+      node {
+        id
+        title
+        slug
+        ManagementPosition {
+          position
+        }
+        featuredImage {
+          node {
+            sourceUrl(size: _1536X1536)
+            uri
+            mediaItemUrl
+            caption
+            altText
+          }
+        }
+      }
+      cursor
+    }
+  }
+}

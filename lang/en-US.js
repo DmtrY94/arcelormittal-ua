@@ -3,5 +3,6 @@ export default async (context, locale) => {
         goToPage: 'Go to page',
         pageAllNews: 'News',
         breadCrumbMain: 'Homepage',
+        pageAllManagement: 'Our-management',
     })
 }

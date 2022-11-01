@@ -76,15 +76,15 @@ export default {
     imageAnimation() {
       const gsap = this.$gsap
       gsap.fromTo(
-        '.cover-image',
+        '.cover-image__img',
         {
-          y: 50,
+          scale: 1.8,
           opacity: 0,
         },
         {
-          y: 0,
+          scale: 1,
           opacity: 1,
-          duration: 0.2,
+          duration: 0.35,
         }
       )
     },
