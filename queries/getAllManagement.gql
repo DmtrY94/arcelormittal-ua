@@ -1,7 +1,7 @@
 query getAllManagement(
     $locale: LanguageCodeFilterEnum,  
   ) {
-  getAllManagement: allManagement(first: 100, where: {language: $locale}) {
+  getAllManagement: allManagement(first: 100, where: {language: $locale, orderby: {field: MENU_ORDER, order: ASC}}) {
     edges {
       node {
         id

@@ -1,0 +1,13 @@
+query getManagement($slug: String, $locale: LanguageCodeEnum!) {
+  getManagement: managementBy(slug: $slug) {
+    translation(language: $locale) {
+      ManagementPosition {
+        position
+      }
+      content
+      id
+      slug
+      title
+    }
+  }
+}
