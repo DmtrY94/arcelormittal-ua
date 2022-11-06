@@ -39,6 +39,9 @@
         <div class="hero-content__left">
           <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
           <h1 class="hero-content__title">{{ title }}</h1>
+          <div v-if="newsPage" class="hero-content__date">
+            {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'uk' }) }}
+          </div>
         </div>
       </div>
     </div>
@@ -50,8 +53,15 @@ export default {
     title: String,
     image: Object,
     parent: {},
+    date: {},
   },
-
+  data() {
+    return {
+      newsPage:
+        this.$route.name === 'media-news-id___uk' ||
+        this.$route.name === 'media-news-id___en',
+    }
+  },
   mounted() {
     this.titleAnimation()
     this.imageAnimation()
@@ -136,6 +146,11 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+.hero-content__date {
+  font-size: 16px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.65);
 }
 .hero-content {
   position: absolute;

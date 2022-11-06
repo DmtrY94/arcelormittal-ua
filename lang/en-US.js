@@ -4,5 +4,6 @@ export default async (context, locale) => {
         pageAllNews: 'News',
         breadCrumbMain: 'Homepage',
         pageAllManagement: 'Our-management',
+        aboutPageBreadcrumbs: 'About',
     })
 }

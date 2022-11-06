@@ -1,6 +1,10 @@
 <template>
   <main v-if="getManagement" class="page-content page-no-hero">
     <div class="container">
+      <MoleculesBreadcrumbs
+        :slug1="getManagement.title"
+        class="breadcrumbs-container--page-no-cover"
+      />
       <div class="wrapper-block">
         <div class="wrapper-block__content">
           <h3 class="wrapper-block__title">{{ getManagement.title }}</h3>
@@ -30,11 +34,6 @@
 import getManagement from '@/queries/getManagement'
 
 export default {
-  asyncData(context) {
-    if (process.client) {
-      console.log(context)
-    }
-  },
   apollo: {
     getManagement: {
       query: getManagement,
@@ -128,12 +127,21 @@ export default {
 }
 @media (max-width: $mobile) {
   .wrapper-block {
+    margin-top: 32px;
+    margin-bottom: 64px;
     flex-direction: column-reverse;
-    &__content, &__iamge  {
+    &__content,
+    &__iamge {
       width: 100%;
     }
     &__iamge {
       margin-bottom: 32px;
+    }
+    &__text {
+      margin-top: 24px;
+      p {
+        font-size: 16px;
+      }
     }
   }
 }

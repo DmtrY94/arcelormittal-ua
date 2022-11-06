@@ -224,11 +224,12 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .page-no-hero {
-    margin-top: 64px;
+    margin-top: 100px;
 }
 
 .site-content {
-    margin-top: 96px;
+    margin-top: 64px;
+    margin-bottom: 96px;
     min-height: 100vh;
 }
 
@@ -291,6 +292,18 @@ h5 {
 .page-leave-active {
     opacity: 0;
 
+}
+
+.breadcrumbs-container--page-no-cover {
+    .breadcrumbs-link {
+        color: var(--color);
+    }
+    .breadcrumbs-item::after {
+        background: var(--color);
+    }
+    .breadcrumbs-link--noactive {
+        color: rgba(0, 0, 0, 0.48);
+    }
 }
 
 .wp-block-button {
@@ -394,6 +407,25 @@ h5 {
 }
 
 @media (max-width: $mobile) {
+    h1 {
+        font-size: 50px;
+    }
+    
+    h2 {
+        font-size: 37px;
+    }
+    
+    h3 {
+        font-size: 28px;
+    }
+    
+    h4 {
+        font-size: 21px;
+    }
+    
+    h5 {
+        font-size: 18px;
+    }
     .container {
         max-width: 100%;
         padding: 0 15px;
@@ -403,6 +435,9 @@ h5 {
         max-width: 100%;
         font-size: 50px;
         line-height: 120%;
+    }
+    .page-no-hero {
+        margin-top: 64px;
     }
 
 }

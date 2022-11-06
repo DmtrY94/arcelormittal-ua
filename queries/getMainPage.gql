@@ -53,6 +53,7 @@ query getMainPage($locale: LanguageCodeEnum!) {
         title
         slug
         date
+        excerpt
         featuredImage {
           node {
             sourceUrl(size: _1536X1536)

@@ -20,7 +20,7 @@
       </div>
     </div>
     <NuxtLink
-      :to="`/news/${post.slug}`"
+      :to="`/media/news/${post.slug}`"
       class="large-card__link"
     ></NuxtLink>
   </div>
@@ -40,9 +40,6 @@ export default {
 <style lang="scss">
 .large-card {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--border-color);
   padding-top: 24px;
   padding-bottom: 24px;
   &:first-child {
@@ -62,14 +59,11 @@ export default {
 }
 .large-card__image {
   position: relative;
-  width: 45%;
-  padding-right: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .large-card__content {
-  width: 55%;
   display: flex;
   flex-direction: column;
 }

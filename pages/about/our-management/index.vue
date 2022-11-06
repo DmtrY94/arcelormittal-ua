@@ -63,15 +63,17 @@ export default {
 </script>
 <style lang="scss">
 .allmanagement-page {
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 72px;
   margin-bottom: 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px 30px;
+  row-gap: 32px;
+  column-gap: 30px;
+  flex-wrap: wrap;
 }
 .management-cards {
-  margin-right: 30px;
-  margin-bottom: 30px;
-  width: calc(33.33333% - 30px);
+  position: relative;
   &__image {
     overflow: hidden;
     position: relative;
@@ -120,5 +122,14 @@ export default {
   object-position: center;
   width: 100%;
   height: 100%;
+}
+@media (max-width: $mobile) {
+  .allmanagement-page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
 }
 </style>

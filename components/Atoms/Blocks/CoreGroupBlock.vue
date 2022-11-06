@@ -1,6 +1,6 @@
 <template>
-  <div v-if="attributes.attributes.className == 'block-manadger'">
-    <div>{{attributes}} fdfd</div>
+  <div v-html="attributes.saveContent">
+    <div>{{ attributes }} fdfd</div>
   </div>
 </template>
 <script>

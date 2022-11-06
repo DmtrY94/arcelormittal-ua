@@ -2,7 +2,7 @@
   <main class="page-content">
     <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
     <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
-    {{ AllNews }}
+    <OrganismsMainPageNews v-if="AllNews" :news="AllNews"/>
   </main>
 </template>
 
