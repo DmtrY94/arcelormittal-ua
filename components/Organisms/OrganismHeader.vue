@@ -2,9 +2,14 @@
   <header class="header">
     <div
       class="sticky-header header-desktop header-desktop--dark"
-      :class="{
-        'header-desktop--light': isOpen || isSearch,
-      }"
+      :class="[
+        isSearch ? 'header-desktop--light' : '',
+        isOpen ? 'header-desktop--light' : '',
+        $route.name === 'about-our-management-id___uk' ||
+        $route.name === 'about-our-management-id___en'
+          ? 'header-desktop--light-page'
+          : '',
+      ]"
     >
       <div class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
@@ -221,7 +226,8 @@ export default {
     color: #fff;
   }
 }
-.header-desktop--light {
+.header-desktop--light,
+.header-desktop--light-page {
   background: #ffffff;
   transition: all 0.3s;
   .logo-shape {
@@ -325,7 +331,7 @@ export default {
 }
 
 @media (max-width: $tablet) {
- .header-navigation {
+  .header-navigation {
     display: none;
   }
   .header-toolbar__menu {
@@ -357,6 +363,5 @@ export default {
   .header-toolbar__search {
     margin-right: 16px;
   }
-  
 }
 </style>

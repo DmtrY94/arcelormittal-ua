@@ -8,6 +8,22 @@ query getManagement($slug: String, $locale: LanguageCodeEnum!) {
       id
       slug
       title
+      featuredImage {
+          node {
+            sourceUrl(size: _1536X1536)
+            uri
+            mediaItemUrl
+            caption
+            altText
+          }
+      }
+      seo {
+        title
+        metaDesc
+        opengraphImage {
+          sourceUrl
+        }
+      }
     }
   }
 }
