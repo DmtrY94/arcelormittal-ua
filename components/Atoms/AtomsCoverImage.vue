@@ -38,10 +38,10 @@
       <div class="container">
         <div class="hero-content__left">
           <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
-          <h1 class="hero-content__title">{{ title }}</h1>
           <div v-if="newsPage" class="hero-content__date">
             {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'uk' }) }}
           </div>
+          <h1 class="hero-content__title">{{ title }}</h1>
         </div>
       </div>
     </div>
@@ -149,7 +149,7 @@ export default {
 }
 .hero-content__date {
   font-size: 16px;
-  margin-top: 24px;
+  margin-top: 64px;
   color: rgba(255, 255, 255, 0.65);
 }
 .hero-content {
@@ -163,4 +163,10 @@ export default {
     color: #fff;
   }
 }
+@media (max-width: $mobile) {
+  .hero-content__left {
+    height: 100%;
+  }
+}
+
 </style>

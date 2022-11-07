@@ -360,6 +360,17 @@ export default {
     border-right: 0;
     margin-right: 0;
   }
+  .header-desktop--light {
+    .header-toolbar__lang {
+      border-right: 0;
+    }
+    .header-toolbar__menu {
+      border-left: 1px solid #212121;
+      svg {
+        color: var(--color);
+      }
+    }
+  }
   .header-toolbar__search {
     margin-right: 16px;
   }
