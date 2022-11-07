@@ -3,7 +3,7 @@
     <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
     <BlockNews v-if="AllNews.edges" :news="AllNews.edges[0]"/>
     <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
-    <OrganismsMainPageNews v-if="AllNews" :news="newsAll" />
+    <OrganismsMainPageNews v-if="newsAll" :news="newsAll" />
   </main>
 </template>
 
