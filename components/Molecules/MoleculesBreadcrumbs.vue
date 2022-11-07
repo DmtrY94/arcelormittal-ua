@@ -19,6 +19,11 @@
           {{ $t('pageAllManagement') }}
         </NuxtLink>
       </li>
+      <li v-if="allnewsPage" class="breadcrumbs-item">
+        <NuxtLink :to="localePath('/media/news')" class="breadcrumbs-link">
+          {{ $t('pageAllNews') }}
+        </NuxtLink>
+      </li>
       <li v-if="parent" class="breadcrumbs-item">
         <NuxtLink
           :to="localePath({ path: `/${parent.slug}` })"
@@ -48,6 +53,9 @@ export default {
       allmanagementPage:
         this.$route.name === 'about-our-management___uk' ||
         this.$route.name === 'about-our-management___en',
+      allnewsPage:
+        this.$route.name === 'media-news-id___uk' ||
+        this.$route.name === 'media-news-id___en',
     }
   },
 }

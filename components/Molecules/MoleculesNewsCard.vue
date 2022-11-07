@@ -40,11 +40,6 @@ export default {
 <style lang="scss">
 .large-card {
   position: relative;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  &:first-child {
-    border-top: 0;
-  }
   &:hover {
     .image-element__picture {
       top: -8px;
@@ -105,7 +100,6 @@ export default {
 }
 @media (max-width: 1024px) {
   .large-card {
-    padding: 16px 0;
     flex-direction: column;
   }
   .large-card__image {

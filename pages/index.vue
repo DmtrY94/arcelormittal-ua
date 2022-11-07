@@ -1,8 +1,9 @@
 <template>
-  <main class="page-content">
+  <main class="page-content main">
     <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
+    <BlockNews v-if="AllNews.edges" :news="AllNews.edges[0]"/>
     <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
-    <OrganismsMainPageNews v-if="AllNews" :news="AllNews"/>
+    <OrganismsMainPageNews v-if="AllNews" :news="newsAll" />
   </main>
 </template>
 
@@ -10,6 +11,11 @@
 import getMainPage from '@/queries/getMainPage'
 
 export default {
+  data() {
+    return {
+      AllNews: []
+    }
+  },
   apollo: {
     getMainPage: {
       prefetch: true,
@@ -36,7 +42,13 @@ export default {
       },
     },
   },
-
+  computed: {
+    newsAll() {
+      return this.AllNews.edges
+        .map((p) => p)
+        .slice(1, 7)
+    }
+  },
   head() {
     return {
       title: this.getMainPage?.seo?.title,
@@ -72,3 +84,10 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.main {
+  .site-content {
+    margin-top: 0;
+  }
+}
+</style>

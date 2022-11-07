@@ -25,7 +25,7 @@
   </button>
   <NuxtLink
     v-else
-    :to="buttonLink"
+    :to="localePath(buttonLink)"
     class="button-content"
     :class="[type === 'white' ? 'white-style' : 'color-style']"
     :style="{ width: buttonWith }"
@@ -122,8 +122,11 @@ export default {
     z-index: -1;
   }
   &:hover {
-    color: #ffffff;
+    color: #ffffff !important;
     border: 1px solid transparent;
+    .button-content__name {
+      color: #ffffff !important;
+    }
   }
   &:hover .button-content__icon {
     color: #ffffff;

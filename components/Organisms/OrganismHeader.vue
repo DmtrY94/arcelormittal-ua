@@ -4,9 +4,13 @@
       class="sticky-header header-desktop header-desktop--dark"
       :class="[
         isSearch ? 'header-desktop--light' : '',
-        isOpen ? 'header-desktop--light' : '',
+        isOpen || isOpenobile ? 'header-desktop--light' : '',
         $route.name === 'about-our-management-id___uk' ||
         $route.name === 'about-our-management-id___en'
+          ? 'header-desktop--light-page'
+          : '',
+        $route.name === 'search___uk' ||
+        $route.name === 'search___en'
           ? 'header-desktop--light-page'
           : '',
       ]"
@@ -83,7 +87,8 @@
             </span>
           </div>
           <div class="header-toolbar__menu" @click="openMenuMobile()">
-            <TheMenu />
+            <TheClose v-if="isOpenobile"/>
+            <TheMenu v-else/>
           </div>
         </div>
       </div>
@@ -97,6 +102,7 @@
       :menu-parent="item"
       class="testttt"
     />
+    <MoleculesMenuMobile :menus="menuParent" :is-open="isOpenobile" />
   </header>
 </template>
 <script>
@@ -106,6 +112,7 @@ export default {
   data() {
     return {
       isOpen: null,
+      isOpenobile: false,
       isSearch: false,
       getMenu: [],
       searchText: '',
@@ -172,7 +179,7 @@ export default {
       }
     },
     openMenuMobile() {
-      this.isOpen = true
+      this.isOpenobile = !this.isOpenobile
     },
     openSearch() {
       this.isSearch = true

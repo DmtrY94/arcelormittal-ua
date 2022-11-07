@@ -13,7 +13,7 @@
           </p>
           <div v-html="getManagement.content" class="wrapper-block__text"></div>
         </div>
-        <div class="wrapper-block__iamge">
+        <div class="wrapper-block__image">
           <nuxt-picture
             v-if="getManagement.featuredImage"
             :src="getManagement.featuredImage.node.sourceUrl"
@@ -97,7 +97,11 @@ export default {
     position: relative;
     width: calc(50% - 15px);
   }
-  &__iamge {
+  &__image {
+    display: block;
+    height: 100%;
+    min-height: 698px;
+    background: #e1e1e1;
     position: relative;
     width: calc(50% - 15px);
   }
@@ -113,6 +117,7 @@ export default {
     p {
       font-size: 21px;
       line-height: 150%;
+      margin-bottom: 32px;
     }
   }
   &__picture {
@@ -121,7 +126,10 @@ export default {
     &::before {
       content: '';
       display: table;
-      padding-bottom: 106.66%;
+      padding-bottom: 112.2222%;
+    }
+    .image-element__img {
+      z-index: 1;
     }
   }
 }

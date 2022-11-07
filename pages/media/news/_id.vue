@@ -2,6 +2,9 @@
   <main class="page-content">
     <AtomsCoverImage v-if="getNews" :title="getNews.title" :image="getNews.featuredImage" :date="getNews.date" />
     <OrganismsBlocks  v-if="getNews" :blocks="getNews.blocks"  />
+    <div class="banner-block__news">
+      test
+    </div>
   </main>
 </template>
 <script>

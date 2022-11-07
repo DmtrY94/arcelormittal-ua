@@ -1,6 +1,6 @@
 <template>
   <main class="page-content">
-    <OrganismsHeroSearch />
+    <OrganismsHeroSearch :search-text="searchText"/>
     {{ test }}
   </main>
 </template>
@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      test: this.$route.query.searchText,
+      searchText: '' || this.$route.query.searchText,
     }
   },
 }

@@ -33,8 +33,9 @@
             <NuxtLink
               :to="`/about/our-management/${card.node.slug}`"
               class="management-cards__more"
-              >Детальніше</NuxtLink
             >
+              {{ $t('readMore') }}
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@ export default {
     margin-bottom: 24px;
     &::before {
       display: block;
-      padding-top: 92.18%;
+      padding-top: 108.8888%;
       content: '';
     }
   }
