@@ -48,6 +48,7 @@ export default {
     '@nuxtjs/stylelint-module',
     'nuxt-gsap-module',
     '@nuxtjs/date-fns',
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

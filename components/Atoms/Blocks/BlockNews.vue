@@ -37,6 +37,7 @@ export default {
 </script>
 <style lang="scss">
 .section-news {
+  background: #E6EAEF;
   padding: 86px 0;
   &__wrapper {
     display: flex;
@@ -66,6 +67,7 @@ export default {
   &__image {
     position: relative;
     width: 50%;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;

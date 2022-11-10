@@ -4,7 +4,9 @@
       <div class="footer-block">
         <div class="footer-block__left">
           <div class="footer-block__logo">
-            <NuxtLink :to="localePath('/')"><TheFooterLogo /></NuxtLink>
+            <NuxtLink :to="localePath('/')" class="footer-logo"
+              ><TheFooterLogo
+            /></NuxtLink>
           </div>
           <div class="footer-block__bottom">
             <AtomButton
@@ -25,16 +27,33 @@
         </div>
         <div class="footer-block__right">
           <div
-            v-for="item in menuParent"
+            v-for="(item, index) in menuParent"
             :key="item.node.id"
             class="footer-menu__list"
           >
-            <div class="footer-menu__title">
-              <NuxtLink :to="localePath(item.node.path)">{{
-                item.node.label
-              }}</NuxtLink>
+            <div
+              class="footer-menu__title"
+              :class="{
+                'footer-menu__title--active': activeItemIndex == index,
+              }"
+            >
+              <NuxtLink
+                v-if="$device.isDesktop"
+                :to="localePath(item.node.path)"
+                >{{ item.node.label }}</NuxtLink
+              >
+              <div
+                v-else-if="$device.isTablet || $device.isMobile"
+                @click="toggleAccordion(index)"
+                class="flex items-center space-x-3"
+              >
+                {{ item.node.label }}
+              </div>
             </div>
-            <ul>
+            <ul
+              v-show="activeItemIndex == index"
+              class="footer-menu__block-inf"
+            >
               <li
                 v-for="childItem in item.node.childItems.edges"
                 :key="childItem.node.id"
@@ -63,6 +82,8 @@ import getMenu from '@/queries/getMenu'
 export default {
   data() {
     return {
+      isOpen: false,
+      activeItemIndex: null,
       date: new Date().toISOString().slice(0, 4),
     }
   },
@@ -78,6 +99,14 @@ export default {
       update(data) {
         return data.getMenu.edges
       },
+    },
+  },
+  methods: {
+    toggleAccordion(index) {
+      if (this.activeItemIndex === index) {
+        return (this.activeItemIndex = null)
+      }
+      this.activeItemIndex = index
     },
   },
   computed: {
@@ -174,10 +203,58 @@ export default {
 }
 @media (max-width: $mobile) {
   .footer-block {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    &__left,
+    &__right {
+      width: 100%;
+    }
     &__right {
       display: block;
     }
+    &__left {
+      margin-top: 32px;
+    }
+  }
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+  .footer-block__logo {
+    margin-bottom: 32px;
+  }
+  .footer-menu__list {
+    padding-top: 24px;
+    border-top: 1px solid #ffffff;
+    &:last-child {
+      border-bottom: 1px solid #ffffff !important;
+    }
+  }
+  .footer-menu__title {
+    position: relative;
+    display: flex;
+    padding-bottom: 24px;
+    margin-bottom: 0;
+    &::after,
+    &::before {
+      position: absolute;
+      right: 10px;
+      width: 2px;
+      height: 12px;
+      content: '';
+      background-color: #ffffff;
+      transition: 0.3s ease-in-out;
+    }
+    &::after {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+    &--active::before {
+      -webkit-transform: translateX(0) rotate(90deg);
+      transform: translateX(0) rotate(90deg);
+    }
+  }
+  .footer-menu__block-inf {
+    padding-bottom: 24px;
   }
 }
 </style>

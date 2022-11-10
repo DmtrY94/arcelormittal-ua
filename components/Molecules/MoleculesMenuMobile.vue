@@ -15,6 +15,7 @@
             {{ item.node.label }}
           </li>
         </ul>
+        
       </nav>
     </div>
   </transition>
@@ -59,7 +60,7 @@ export default {
 .navigation-mobile {
   background: #fff;
   min-height: 100vh;
-
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   position: fixed;
