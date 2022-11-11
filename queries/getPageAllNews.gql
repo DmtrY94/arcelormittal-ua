@@ -20,6 +20,9 @@ query getAllNews(
             altText
           }
         }
+        translation(language: UK) {
+          slug
+        }
       }
       cursor
     }

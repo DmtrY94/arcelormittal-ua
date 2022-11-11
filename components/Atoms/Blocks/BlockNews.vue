@@ -13,7 +13,7 @@
           <AtomButton
             :button-name="`${$t('readMore')}`"
             button-with="300px"
-            :button-link="`/media/news/${news.node.slug}`"
+            :button-link="`/media/news/${news.node.translation.slug}`"
             type="color"
             class="button-container"
           />

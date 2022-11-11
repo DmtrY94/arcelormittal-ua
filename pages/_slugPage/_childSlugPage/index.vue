@@ -1,7 +1,13 @@
 <template>
   <main class="page-content">
-    <AtomsCoverImage v-if="getPages" :image="getPages.featuredImage" :parent="getPages.parent.node" :title="getPages.title" />
+    <AtomsCoverImage
+      v-if="getPages"
+      :image="getPages.featuredImage"
+      :parent="getPages.parent.node"
+      :title="getPages.title"
+    />
     <OrganismsBlocks v-if="getPages" :blocks="getPages.blocks" />
+    <OrganismsRelatedPages v-if="getPages" :pages="getPages.children" :slug="this.$route.params.childSlugPage" :slug-parent="this.$route.params.slugPage" />
   </main>
 </template>
 <script>

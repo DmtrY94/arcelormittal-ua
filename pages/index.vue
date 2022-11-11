@@ -1,19 +1,21 @@
 <template>
-  <main class="page-content main">
+  <AtomsLoading v-if="$apollo.loading" type="main-page" />
+  <main v-else-if="getMainPage" class="page-content main">
     <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
-    <BlockNews v-if="AllNews.edges" :news="AllNews.edges[0]"/>
+    <BlockNews v-if="getMainPageNews.edges" :news="getMainPageNews.edges[0]"/>
     <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
-    <OrganismsMainPageNews v-if="newsAll" :news="newsAll" />
+    <OrganismsMainPageNews v-if="getMainPageNews.edges" :news="newsAll" />
   </main>
 </template>
 
 <script>
+import getMainPageNews from '@/queries/getMainPageNews'
 import getMainPage from '@/queries/getMainPage'
 
 export default {
   data() {
     return {
-      AllNews: []
+      getMainPageNews: []
     }
   },
   apollo: {
@@ -29,22 +31,22 @@ export default {
         return data.getMainPage.translation
       },
     },
-    AllNews: {
+    getMainPageNews: {
       prefetch: true,
-      query: getMainPage,
+      query: getMainPageNews,
       variables() {
         return {
           locale: this.$i18n.locale.toUpperCase(),
         }
       },
       update(data) {
-        return data.AllNews
+        return data.getMainPageNews
       },
     },
   },
   computed: {
     newsAll() {
-      return this.AllNews.edges
+      return this.getMainPageNews.edges
         .map((p) => p)
         .slice(1, 7)
     }

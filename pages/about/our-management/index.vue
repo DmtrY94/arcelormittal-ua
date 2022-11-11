@@ -1,5 +1,6 @@
 <template>
   <div v-if="$apollo.error" class="container-error">error</div>
+  <AtomsLoading v-else-if="$apollo.loading" type="cards-page" />
   <main v-else-if="getAllManagement" class="page-content">
     <AtomsCoverImage :title="`${$t('pageAllManagement')}`" />
     <div v-if="getAllManagement" class="container">
@@ -29,9 +30,8 @@
             <p class="management-cards__position">
               {{ card.node.ManagementPosition.position }}
             </p>
-
             <NuxtLink
-              :to="`/about/our-management/${card.node.slug}`"
+              :to="localePath(`/about/our-management/${card.node.translation.slug}`)"
               class="management-cards__more"
             >
               {{ $t('readMore') }}

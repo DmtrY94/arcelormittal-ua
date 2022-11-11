@@ -9,5 +9,6 @@ export default async (context, locale) => {
         readMore: 'Детальніше',
         lastNews: 'Останні новини',
         allNews: 'Усі новини',
+        related: "Пов'язаний вміст"
     })
 }

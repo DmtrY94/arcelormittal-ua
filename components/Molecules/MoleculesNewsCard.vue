@@ -20,7 +20,7 @@
       </div>
     </div>
     <NuxtLink
-      :to="`/media/news/${post.slug}`"
+      :to="localePath(`/media/news/${post.translation.slug}`)"
       class="large-card__link"
     ></NuxtLink>
   </div>

@@ -1,15 +1,13 @@
-query getAllManagement(
-    $locale: LanguageCodeFilterEnum,  
-  ) {
-  getAllManagement: allManagement(first: 100, where: {language: $locale, orderby: {field: MENU_ORDER, order: ASC}}) {
+query getMainPage(
+  $locale: LanguageCodeFilterEnum,) { 
+  getMainPageNews: allNews(first: 7, where: {language: $locale}) {
     edges {
       node {
         id
         title
         slug
-        ManagementPosition {
-          position
-        }
+        date
+        excerpt
         featuredImage {
           node {
             sourceUrl(size: _1536X1536)
@@ -23,7 +21,6 @@ query getAllManagement(
           slug
         }
       }
-      cursor
     }
   }
 }

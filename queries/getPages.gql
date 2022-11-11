@@ -23,6 +23,26 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
           }
         }
       }
+      children {
+        edges {
+          node {
+            slug
+            ... on Page {
+              id
+              title
+              featuredImage {
+                node {
+                  sourceUrl(size: _1536X1536)
+                  uri
+                  mediaItemUrl
+                  caption
+                  altText
+                }
+              }
+            }
+          }
+        }
+      }
       blocks {
         ... on CoreHeadingBlock {
           dynamicContent

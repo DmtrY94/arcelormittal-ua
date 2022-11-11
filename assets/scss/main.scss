@@ -283,6 +283,19 @@ h5 {
     line-height: 120%;
 }
 
+.gr-col-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gr-col-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gr-col-4 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
 .page-enter-active,
 .page-leave-active {
     transition: all 0.25s;
@@ -298,9 +311,11 @@ h5 {
     .breadcrumbs-link {
         color: var(--color);
     }
+
     .breadcrumbs-item::after {
         background: var(--color);
     }
+
     .breadcrumbs-link--noactive {
         color: rgba(0, 0, 0, 0.48);
     }
@@ -410,22 +425,23 @@ h5 {
     h1 {
         font-size: 50px;
     }
-    
+
     h2 {
         font-size: 37px;
     }
-    
+
     h3 {
         font-size: 28px;
     }
-    
+
     h4 {
         font-size: 21px;
     }
-    
+
     h5 {
         font-size: 18px;
     }
+
     .container {
         max-width: 100%;
         padding: 0 15px;
@@ -436,6 +452,7 @@ h5 {
         font-size: 50px;
         line-height: 120%;
     }
+
     .page-no-hero {
         margin-top: 64px;
     }

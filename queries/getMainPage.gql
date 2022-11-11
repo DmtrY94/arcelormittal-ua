@@ -1,4 +1,5 @@
-query getMainPage($locale: LanguageCodeEnum!) {
+query getMainPage(
+  $locale: LanguageCodeEnum!,) {
   getMainPage: pageBy(uri: "holovna") {
     translation(language: $locale) {
       id
@@ -42,26 +43,6 @@ query getMainPage($locale: LanguageCodeEnum!) {
         metaDesc
         opengraphImage {
           sourceUrl
-        }
-      }
-    }
-  }
-  AllNews: allNews(first: 7, where: {language: UK}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        date
-        excerpt
-        featuredImage {
-          node {
-            sourceUrl(size: _1536X1536)
-            uri
-            mediaItemUrl
-            caption
-            altText
-          }
         }
       }
     }

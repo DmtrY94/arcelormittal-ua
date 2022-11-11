@@ -1,5 +1,6 @@
 <template>
-  <main v-if="getManagement" class="page-content page-no-hero">
+  <AtomsLoading v-if="$apollo.loading" type="page-manager" />
+  <main v-else-if="getManagement" class="page-content page-no-hero">
     <div class="container">
       <MoleculesBreadcrumbs
         :slug1="getManagement.title"
@@ -25,6 +26,7 @@
               'data-my-data': 'my-value',
             }"
           />
+          <div v-else class="wrapper-block__picture--loading"></div>
         </div>
       </div>
     </div>
@@ -101,7 +103,6 @@ export default {
     display: block;
     height: 100%;
     min-height: 698px;
-    background: #e1e1e1;
     position: relative;
     width: calc(50% - 15px);
   }
@@ -122,7 +123,6 @@ export default {
   }
   &__picture {
     position: relative;
-    background: #e1e1e1;
     &::before {
       content: '';
       display: table;
@@ -130,6 +130,10 @@ export default {
     }
     .image-element__img {
       z-index: 1;
+    }
+    &--loading {
+      background: #e1e1e1;
+      min-height: 698px;
     }
   }
 }

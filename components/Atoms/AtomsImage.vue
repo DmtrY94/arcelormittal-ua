@@ -11,6 +11,19 @@
       }"
     />
   </figure>
+  <figure v-else class="image-element">
+    <nuxt-picture
+      src="/images/images-null.png"
+      loading="lazy"
+      class="image-element__picture"
+      alt="test"
+      :imgAttrs="{
+        class: 'image-element__img',
+        style: 'display:block',
+        'data-my-data': 'my-value',
+      }"
+    />
+  </figure>
 </template>
 <script>
 export default {

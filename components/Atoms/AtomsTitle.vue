@@ -13,6 +13,6 @@ export default {
 <style lang="scss">
 .title-block {
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: 64px;
 }
 </style>

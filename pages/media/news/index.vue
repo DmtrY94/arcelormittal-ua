@@ -1,5 +1,6 @@
 <template>
   <div v-if="$apollo.error" class="container-error">error</div>
+  <AtomsLoading v-else-if="$apollo.loading" type="cards-page" />
   <main v-else-if="getAllNews">
     <AtomsCoverImage :title="`${$t('pageAllNews')}`" />
     <div v-if="getAllNews" class="container">
