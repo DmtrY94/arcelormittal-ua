@@ -19,7 +19,7 @@
         v-else-if="block.__typename == 'CoreListBlock'"
         class="container container-sm"
       >
-        <CoreListBlock :attributes="block.attributes" />
+        <CoreListBlock :attributes="block" />
       </div>
       <div v-else-if="block.__typename == 'CoreGroupBlock'">
         <CoreGroupBlock :attributes="block" />

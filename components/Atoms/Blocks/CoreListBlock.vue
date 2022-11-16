@@ -1,6 +1,6 @@
 <template>
-  <div class="list-block text-block-width">
-    <ul v-html="attributes.values"></ul>
+  <div class="list-block text-block-width"  v-html="attributes.saveContent">
+    
   </div>
 </template>
 <script>

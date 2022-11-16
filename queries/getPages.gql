@@ -76,6 +76,7 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
         }
         ... on CoreListBlock {
           dynamicContent
+          saveContent
           attributes {
             ... on CoreListBlockAttributes {
               values
