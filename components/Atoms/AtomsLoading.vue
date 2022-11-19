@@ -1,5 +1,5 @@
 <template>
-  <div v-if="type === 'cards-page' || type === 'page'">
+  <div v-if="type === 'cards-page' || type === 'page' || type === 'cards-page-news'">
     <div class="loading-block">
       <div class="loading-cover"></div>
       <div class="container">
@@ -27,7 +27,7 @@
             <div class="loading-text__item"></div>
           </div>
         </div>
-        <div v-else class="loading__cards">
+        <div v-else class="loading__cards" :class="{'loading-news__cards': type === 'cards-page-news'}">
           <div class="loading__item">
             <div class="loading-item__cover"></div>
             <div class="loading-item__content"></div>
@@ -194,6 +194,14 @@ export default {
     margin-bottom: 24px;
     &:nth-of-type(2n) {
       width: 50%;
+    }
+  }
+}
+
+.loading-news__cards {
+  .loading-item__cover {
+    &::before {
+      padding-top: 66.6666%;
     }
   }
 }
