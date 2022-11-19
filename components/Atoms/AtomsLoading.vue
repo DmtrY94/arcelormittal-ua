@@ -233,6 +233,8 @@ export default {
       margin-bottom: 64px;
     }
     &__item {
+      height: 18px;
+      margin-bottom: 18px;
       width: 100%;
       &:nth-of-type(2n) {
         width: 90%;

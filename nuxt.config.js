@@ -43,7 +43,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-
+    '@nuxtjs/style-resources',
     '@nuxt/postcss8',
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
