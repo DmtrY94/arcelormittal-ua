@@ -11,9 +11,9 @@
       <div class="file-block__name">{{ attributes.fileName }}.{{ fileType }}</div>
     </div>
     <div class="file-block__right">
-      <a :href="attributes.href" target="_blank" class="file-block__download">{{
-        attributes.downloadButtonText
-      }}</a>
+      <a :href="attributes.href" target="_blank" class="file-block__download">
+        {{$t('download')}}
+      </a>
     </div>
   </div>
 </template>
@@ -84,6 +84,21 @@ export default {
       -webkit-animation: draw-line 0.25s ease-in-out;
       animation: draw-line 0.25s ease-in-out;
     }
+  }
+}
+@media (max-width: $mobile) {
+  .file-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .file-block__name {
+    font-size: 16px;
+  }
+  .file-block__right {
+    margin-top: 24px;
+  }
+  .file-block__download {
+    font-size: 18px;
   }
 }
 </style>

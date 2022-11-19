@@ -9,6 +9,8 @@ export default async (context, locale) => {
         readMore: 'Read more',
         lastNews: 'Last news',
         allNews: 'All news',
-        related: 'Related content'
+        related: 'Related content',
+        download: 'Download',
+        loadMore: 'Load more'
     })
 }

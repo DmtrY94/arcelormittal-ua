@@ -10,6 +10,20 @@
           :key="post.id"
           :post="post.node"
         />
+        <div
+          v-if="showMoreEnabled && getAllNews.pageInfo.hasNextPage"
+          class="list-container__button-block"
+          @click="showMores"
+        >
+          <AtomButton
+            :button-name="`${$t('loadMore')}`"
+            button-with="254px"
+            button-link="none"
+            type="color"
+            class="button-container"
+          />
+        </div>
+        <div v-else></div>
       </div>
     </div>
   </main>
@@ -17,9 +31,17 @@
 <script>
 import getAllNews from '@/queries/getPageAllNews'
 
-const pageSize = 10
+const pageSize = 6
 
 export default {
+  data() {
+    return {
+      page: 0,
+      getAllNews: '',
+      showMoreEnabled: true,
+      params: this.$route.params.slug,
+    }
+  },
   apollo: {
     getAllNews: {
       prefetch: true,
@@ -34,6 +56,30 @@ export default {
       update(data) {
         return data.getAllNews
       },
+    },
+  },
+  methods: {
+    showMores() {
+      this.$apollo.queries.getAllNews.fetchMore({
+        variables: {
+          first: 3,
+          after: this.getAllNews.pageInfo.endCursor,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const newEdges = fetchMoreResult.getAllNews.edges
+          const pageInfo = fetchMoreResult.getAllNews.pageInfo
+
+          this.showMoreEnabled = pageInfo.hasNextPage
+          return {
+            getAllNews: {
+              __typename: previousResult.getAllNews.__typename,
+              // Merging the tag list
+              edges: [...previousResult.getAllNews.edges, ...newEdges],
+              pageInfo,
+            },
+          }
+        },
+      })
     },
   },
 }

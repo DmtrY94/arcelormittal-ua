@@ -24,6 +24,30 @@
       </svg>
     </span>
   </a>
+  <button
+    v-else-if="buttonLink === 'none'"
+    class="button-content"
+    :class="[type === 'white' ? 'white-style' : 'color-style']"
+    :style="{ width: buttonWith }"
+  >
+    <span class="button-content__name">{{ buttonName }}</span>
+    <span class="button-content__icon">
+      <svg
+        width="25"
+        height="11"
+        viewBox="0 0 25 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M19.3379 0.295044L24.9998 5.49104L19.3674 10.705L18.7385 10.0253L23.1129 5.97536L0.281615 5.93029L0.279785 5.00584L23.1553 5.05076L18.7148 0.975181L19.3379 0.295044Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </button>
   <NuxtLink
     v-else
     :to="localePath(buttonLink)"

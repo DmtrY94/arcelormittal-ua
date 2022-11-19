@@ -233,6 +233,34 @@ input[type="search"]::-webkit-search-cancel-button {
     min-height: 100%
 }
 
+.site-content a {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor));
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    font-family: inherit;
+    padding-bottom: 2px;
+    text-decoration: none;
+
+    &:hover {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor));
+        background-image: linear-gradient(currentColor, currentColor);
+        color: var(--color-primary);
+        -webkit-animation: line .25s ease-in-out;
+        animation: line .25s ease-in-out;
+    }
+}
+
+@keyframes line {
+    0% {
+        background-size: 0 2px;
+    }
+    100% {
+        background-size: 100% 2px;
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1330px;
