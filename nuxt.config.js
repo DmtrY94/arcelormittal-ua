@@ -19,7 +19,7 @@ export default {
 
 
   styleResources: {
-    scss: ['./assets/scss/*.scss']
+    scss: ['@/assets/scss/*.scss']
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -37,7 +37,8 @@ export default {
   },
 
   dateFns: {
-    locales: 'uk'
+    locales: ["uk", "en-US" ],
+    fallbackLocale: "uk"
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -139,5 +140,26 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    // Просим стили вырезать в отдельные файлы. Иначе css будет inline.
+    extractCSS: true,
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: true,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true
+      }
+    },
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true
+    },
+  },
 }

@@ -34,14 +34,24 @@
         />
       </figure>
     </div>
-    <div class="hero-content">
+    <div class="hero-content" :class="[newsPage ? 'hero-content--news' : '']">
       <div class="container">
         <div class="hero-content__left">
           <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
-          <div v-if="newsPage" class="hero-content__date">
-            {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'uk' }) }}
+          <div v-if="newsPage" class="hero-content-news__header">
+            <div v-if="this.$i18n.locale == 'uk'" class="hero-content-news__date">
+              {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'uk' }) }}
+            </div>
+            <div v-else class="hero-content-news__date">
+              {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'en-US' }) }}
+            </div>
+            <h1 class="hero-content-news__title">
+              {{ title }}
+            </h1>
           </div>
-          <h1 class="hero-content__title">{{ title }}</h1>
+          <h1 v-else class="hero-content__title">
+            {{ title }}
+          </h1>
         </div>
       </div>
     </div>
@@ -131,7 +141,7 @@ export default {
       left: 0;
       bottom: 0;
       z-index: 3;
-      background: rgba(21, 21, 21, 0.4);
+      background: rgba(21, 21, 21, 0.66);
     }
   }
   &__img {
@@ -162,11 +172,45 @@ export default {
   &__title {
     color: #fff;
   }
+  &--news {
+    top: 100px;
+    height: calc(100% - 100px);
+    transform: inherit;
+    .container,
+    .hero-content__left {
+      height: 100%;
+    }
+    .hero-content__left {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
+
+.hero-content-news {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-bottom: 76px;
+  }
+  &__date {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  &__title {
+    width: 80%;
+    font-size: 50px;
+    line-height: 120%;
+    color: #fff;
+  }
+  
+}
+
 @media (max-width: $mobile) {
   .hero-content__left {
     height: 100%;
   }
 }
-
 </style>

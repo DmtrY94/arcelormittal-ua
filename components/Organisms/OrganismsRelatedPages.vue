@@ -42,7 +42,10 @@
               }}</NuxtLink>
             </div>
           </div>
-          <NuxtLink :to="localePath(`/${slugParent}/${slug}/${page.node.slug}`)" class="related-page__link"></NuxtLink>
+          <NuxtLink
+            :to="localePath(`/${slugParent}/${slug}/${page.node.slug}`)"
+            class="related-page__link"
+          ></NuxtLink>
         </div>
       </div>
     </div>
@@ -55,9 +58,7 @@ export default {
     slug: {},
     slugParent: {},
   },
-  date() {
-
-  }
+  date() {},
 }
 </script>
 <style lang="scss">

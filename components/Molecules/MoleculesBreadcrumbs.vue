@@ -82,8 +82,8 @@ export default {
   &::after {
     position: absolute;
     height: 18px;
-    top: 3px;
-    right: -5px;
+    top: 2px;
+    right: -6px;
     content: '';
     width: 1px;
     background: #ffffff;

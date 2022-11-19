@@ -1,6 +1,12 @@
 <template>
-  <main class="page-content">
-    <AtomsCoverImage v-if="getPages" :image="getPages.featuredImage" :parent="getPages.parent.node" :title="getPages.title" />
+  <AtomsLoading v-if="$apollo.loading" type="page" />
+  <main v-else class="page-content">
+    <AtomsCoverImage
+      v-if="getPages"
+      :image="getPages.featuredImage"
+      :parent="getPages.parent.node"
+      :title="getPages.title"
+    />
     <OrganismsBlocks v-if="getPages" :blocks="getPages.blocks" />
   </main>
 </template>

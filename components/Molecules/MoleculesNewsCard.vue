@@ -1,20 +1,21 @@
 <template>
   <div class="large-card">
+    {{loading}}
     <div v-if="post.featuredImage" class="large-card__image">
       <AtomsImage :image="post.featuredImage.node" />
     </div>
     <div class="large-card__content">
       <div class="large-card__title">
-        <h3 v-if="!post.excerpt" class="Heading-h3">
-          {{ post.title }}
-        </h3>
-        <h4 v-else class="Heading-h4">{{ post.title }}</h4>
+        <h4 class="Heading-h4">{{ post.title }}</h4>
       </div>
       <div class="large-card__excerpt" v-html="post.excerpt" />
       <div class="large-card__footer">
         <client-only>
-          <div class="article-item__footer-data">
+          <div v-if="this.$i18n.locale == 'uk'" class="article-item__footer-data">
             {{ $dateFns.format(post.date, 'd MMMM yyyy', { locale: 'uk' }) }}
+          </div>
+          <div v-else class="article-item__footer-data">
+            {{ $dateFns.format(post.date, 'd MMMM yyyy', { locale: 'en-US' }) }}
           </div>
         </client-only>
       </div>
@@ -31,6 +32,7 @@ import AtomsImage from '@/components/Atoms/AtomsImage.vue'
 export default {
   props: {
     post: {},
+    loading: {},
   },
   components: {
     AtomsImage,

@@ -1,5 +1,6 @@
 <template>
-  <main class="page-content">
+  <AtomsLoading v-if="$apollo.loading" type="page" />
+  <main v-else class="page-content">
     <AtomsCoverImage
       v-if="getPages"
       :image="getPages.featuredImage"
@@ -7,7 +8,12 @@
       :title="getPages.title"
     />
     <OrganismsBlocks v-if="getPages" :blocks="getPages.blocks" />
-    <OrganismsRelatedPages v-if="getPages" :pages="getPages.children" :slug="this.$route.params.childSlugPage" :slug-parent="this.$route.params.slugPage" />
+    <OrganismsRelatedPages
+      v-if="getPages"
+      :pages="getPages.children"
+      :slug="this.$route.params.childSlugPage"
+      :slug-parent="this.$route.params.slugPage"
+    />
   </main>
 </template>
 <script>

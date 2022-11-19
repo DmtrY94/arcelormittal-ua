@@ -1,9 +1,33 @@
 <template>
-  <div v-if="type === 'cards-page'">
+  <div v-if="type === 'cards-page' || type === 'page'">
     <div class="loading-block">
       <div class="loading-cover"></div>
       <div class="container">
-        <div class="loading__cards">
+        <div v-if="type === 'page'">
+          <div class="loading-text__list">
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+          </div>
+        </div>
+        <div v-else class="loading__cards">
           <div class="loading__item">
             <div class="loading-item__cover"></div>
             <div class="loading-item__content"></div>
@@ -135,6 +159,22 @@ export default {
       display: block;
       padding-top: 108.8888%;
       content: '';
+    }
+  }
+}
+
+.loading-text {
+  &__list {
+    margin-top: 64px;
+    display: block;
+  }
+  &__item {
+    width: 80%;
+    height: 24px;
+    background: #e1e1e1;
+    margin-bottom: 24px;
+    &:nth-of-type(2n) {
+      width: 50%;
     }
   }
 }

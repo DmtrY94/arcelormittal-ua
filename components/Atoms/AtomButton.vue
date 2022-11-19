@@ -1,8 +1,9 @@
 <template>
-  <button
+  <a
     v-if="!buttonLink"
+    :href="buttonA"
     class="button-content"
-    :class="[type === 'color' ? 'white' : '']"
+    :class="[type === 'white' ? 'white-style' : 'color-style']"
     :style="{ width: buttonWith }"
   >
     <span class="button-content__name">{{ buttonName }}</span>
@@ -22,7 +23,7 @@
         />
       </svg>
     </span>
-  </button>
+  </a>
   <NuxtLink
     v-else
     :to="localePath(buttonLink)"
@@ -65,6 +66,7 @@ export default {
       default: '',
     },
     type: {},
+    buttonA: {},
   },
 }
 </script>

@@ -50,8 +50,25 @@
                 {{ item.node.label }}
               </div>
             </div>
+            
             <ul
               v-show="activeItemIndex == index"
+              class="footer-menu__block-inf"
+            >
+              <li
+                v-for="childItem in item.node.childItems.edges"
+                :key="childItem.node.id"
+                class="footer-menu__item"
+              >
+                <NuxtLink
+                  :to="localePath(childItem.node.path)"
+                  class="footer-menu__link"
+                  >{{ childItem.node.label }}</NuxtLink
+                >
+              </li>
+            </ul>
+            <ul
+              v-if="$device.isDesktop"
               class="footer-menu__block-inf"
             >
               <li
