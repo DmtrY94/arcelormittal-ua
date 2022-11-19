@@ -58,6 +58,25 @@
   <div v-else-if="type === 'main-page'">
     <div class="loading-block">
       <div class="loading-cover loading-cover__video"></div>
+      <div class="container">
+        <div class="loading__cards">
+          <div class="loading__item">
+            <div class="loading-item__cover"></div>
+            <div class="loading-item__content"></div>
+            <div class="loading-item__content"></div>
+          </div>
+          <div class="loading__item">
+            <div class="loading-item__cover"></div>
+            <div class="loading-item__content"></div>
+            <div class="loading-item__content"></div>
+          </div>
+          <div class="loading__item">
+            <div class="loading-item__cover"></div>
+            <div class="loading-item__content"></div>
+            <div class="loading-item__content"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -195,4 +214,5 @@ export default {
     left: 100%;
   }
 }
+
 </style>

@@ -15,7 +15,6 @@
             {{ item.node.label }}
           </li>
         </ul>
-        
       </nav>
     </div>
   </transition>
@@ -39,11 +38,11 @@ export default {
         x: 0,
         duration: 0.5,
       }),
-      this.$gsap.fromTo(
-        '.navigation-mobile__item',
-        { opacity: 0, x: 50, },
-        { opacity: 1, x: 0, duration: 0.3, stagger: 0.08 }
-      )
+        this.$gsap.fromTo(
+          '.navigation-mobile__item',
+          { opacity: 0, x: 50 },
+          { opacity: 1, x: 0, duration: 0.3, stagger: 0.08 }
+        )
     },
     leave(el, done) {
       this.$gsap.to(el, {
@@ -58,7 +57,8 @@ export default {
 </script>
 <style lang="scss">
 .navigation-mobile {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(35px);
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;

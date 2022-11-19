@@ -39,7 +39,10 @@
         <div class="hero-content__left">
           <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
           <div v-if="newsPage" class="hero-content-news__header">
-            <div v-if="this.$i18n.locale == 'uk'" class="hero-content-news__date">
+            <div
+              v-if="this.$i18n.locale == 'uk'"
+              class="hero-content-news__date"
+            >
               {{ $dateFns.format(date, 'd MMMM yyyy', { locale: 'uk' }) }}
             </div>
             <div v-else class="hero-content-news__date">
@@ -205,12 +208,23 @@ export default {
     line-height: 120%;
     color: #fff;
   }
-  
 }
 
 @media (max-width: $mobile) {
   .hero-content__left {
     height: 100%;
+  }
+  .hero-content--news {
+    top: 64px;
+    height: calc(100% - 64px);
+  }
+  .hero-content-news__header {
+    margin-bottom: 48px;
+  }
+  .hero-content-news__title {
+    width: 100%;
+    font-size: 36px;
+    line-height: 120%;
   }
 }
 </style>

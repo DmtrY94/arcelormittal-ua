@@ -9,8 +9,7 @@
         $route.name === 'about-our-management-id___en'
           ? 'header-desktop--light-page'
           : '',
-        $route.name === 'search___uk' ||
-        $route.name === 'search___en'
+        $route.name === 'search___uk' || $route.name === 'search___en'
           ? 'header-desktop--light-page'
           : '',
       ]"
@@ -87,8 +86,8 @@
             </span>
           </div>
           <div class="header-toolbar__menu" @click="openMenuMobile()">
-            <TheClose v-if="isOpenobile"/>
-            <TheMenu v-else/>
+            <TheClose v-if="isOpenobile" />
+            <TheMenu v-else />
           </div>
         </div>
       </div>
@@ -217,7 +216,8 @@ export default {
 .header-desktop {
   display: flex;
   align-items: center;
-  background: rgba(21, 21, 21, 0.35);
+  background: rgba(21, 21, 21, 0.3);
+  backdrop-filter: blur(35px);
   border-bottom: 2px solid var(--color-primary);
   height: 76px;
   width: 100%;
@@ -235,7 +235,8 @@ export default {
 }
 .header-desktop--light,
 .header-desktop--light-page {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(35px);
   transition: all 0.3s;
   .logo-shape {
     color: var(--color-primary);
@@ -294,10 +295,10 @@ export default {
   display: none;
 }
 .toolbar-text {
-  font-size: 16px;
+  font-size: 17px;
   margin-right: 16px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 400;
 }
 .header-toolbar__search {
   cursor: pointer;
@@ -360,12 +361,25 @@ export default {
   .header-desktop__logo {
     svg {
       display: flex;
-      width: 86px;
+      width: 87px;
+      height: 36px;
     }
+  }
+  .header-toolbar {
+    align-items: center;
   }
   .header-toolbar__lang {
     border-right: 0;
     margin-right: 0;
+  }
+  .toolbar-text {
+    font-size: 21px;
+    line-height: 0;
+    margin-top: 1px;
+    display: block;
+  }
+  .header-toolbar__menu svg {
+    height: 16px;
   }
   .header-desktop--light {
     .header-toolbar__lang {

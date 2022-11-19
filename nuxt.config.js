@@ -13,8 +13,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/scss/main.scss',
-    '~/assets/scss/_variables.scss'
+    '@/assets/scss/main.scss',
+    '@/assets/scss/_variables.scss'
   ],
 
 
@@ -43,6 +43,9 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources',
+
+    '@nuxt/postcss8',
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
@@ -142,6 +145,12 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // Просим стили вырезать в отдельные файлы. Иначе css будет inline.
+    postcss: null,
+    loaders: {
+      vue: {
+        prettify: false
+      }
+    },
     extractCSS: true,
     html: {
       minify: {
