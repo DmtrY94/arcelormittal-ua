@@ -214,5 +214,27 @@ export default {
     left: 100%;
   }
 }
-
+@media (max-width: $mobile) {
+  .loading__cards {
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+  .loading-text {
+    &__list {
+      margin-top: 32px;
+      margin-bottom: 64px;
+    }
+    &__item {
+      width: 100%;
+      &:nth-of-type(2n) {
+        width: 90%;
+      }
+    }
+  }
+  .loading__cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
 </style>
