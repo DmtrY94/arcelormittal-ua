@@ -1,5 +1,9 @@
 <template>
-  <div v-if="type === 'cards-page' || type === 'page' || type === 'cards-page-news'">
+  <div
+    v-if="
+      type === 'cards-page' || type === 'page' || type === 'cards-page-news'
+    "
+  >
     <div class="loading-block">
       <div class="loading-cover"></div>
       <div class="container">
@@ -27,7 +31,11 @@
             <div class="loading-text__item"></div>
           </div>
         </div>
-        <div v-else class="loading__cards" :class="{'loading-news__cards': type === 'cards-page-news'}">
+        <div
+          v-else
+          class="loading__cards"
+          :class="{ 'loading-news__cards': type === 'cards-page-news' }"
+        >
           <div class="loading__item">
             <div class="loading-item__cover"></div>
             <div class="loading-item__content"></div>
@@ -47,10 +55,28 @@
       </div>
     </div>
   </div>
-  <div v-else-if="type === 'page-manager'">
+  <div v-else-if="type === 'page-manager'" class="loading-block">
     <div class="container">
       <div class="loading-block__page-m">
-        <div class="loading-page-m__text"></div>
+        <div class="loading-page-m__text">
+          <div class="loading-text__list">
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+            <div class="loading-text__item"></div>
+          </div>
+        </div>
         <div class="loading-page-m__image"></div>
       </div>
     </div>
@@ -121,7 +147,7 @@ export default {
     }
   }
   &-cover {
-    background: #e1e1e1;
+    background: #F2F2F2;
     position: relative;
     width: 100%;
     min-height: 632px;
@@ -151,7 +177,7 @@ export default {
   &__cover {
     overflow: hidden;
     position: relative;
-    background: #e1e1e1;
+    background: #F2F2F2;
     margin-bottom: 24px;
     &::before {
       display: block;
@@ -163,7 +189,7 @@ export default {
     height: 24px;
     margin-bottom: 16px;
     position: relative;
-    background: #e1e1e1;
+    background: #F2F2F2;
   }
 }
 
@@ -171,13 +197,25 @@ export default {
   &__image {
     overflow: hidden;
     position: relative;
-    background: #e1e1e1;
+    background: #F2F2F2;
     margin-bottom: 24px;
     width: calc(50% - 15px);
     &::before {
       display: block;
       padding-top: 108.8888%;
       content: '';
+    }
+  }
+  &__text {
+    width: calc(50% - 15px);
+    .loading-text__list {
+      margin-top: 0;
+    }
+    .loading-text__item {
+      width: 100%;
+      &:nth-of-type(2n) {
+      width: 90%;
+    }
     }
   }
 }
@@ -190,7 +228,7 @@ export default {
   &__item {
     width: 80%;
     height: 24px;
-    background: #e1e1e1;
+    background: #F2F2F2;
     margin-bottom: 24px;
     &:nth-of-type(2n) {
       width: 50%;
@@ -245,6 +283,19 @@ export default {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+  }
+  .loading-block__page-m {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .loading-page-m__text, .loading-page-m__image {
+    width: 100%;
+  }
+  .loading-page-m__image {
+    margin-bottom: 32px;
+  }
+  .loading-block__page-m {
+    margin-top: 120px;
   }
 }
 </style>
