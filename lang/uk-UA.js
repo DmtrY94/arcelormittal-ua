@@ -11,6 +11,7 @@ export default async (context, locale) => {
         allNews: 'Усі новини',
         related: "Пов'язаний вміст",
         download: 'Завантажити',
-        loadMore: 'Показати більше'
+        loadMore: 'Показати більше',
+        links: 'Посилання'
     })
 }

@@ -15,4 +15,9 @@ export default {
     display: block;
     margin-bottom: 64px;
 }
+@media (max-width: $mobile) {
+  .title-block {
+    margin-bottom: 32px;
+  }
+}
 </style>

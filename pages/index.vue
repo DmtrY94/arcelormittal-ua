@@ -3,6 +3,7 @@
   <main v-else-if="getMainPage" class="page-content main">
     <OrganismHeroMain v-if="getMainPage" :heading="getMainPage.mainpage" />
     <BlockNews v-if="getMainPageNews.edges" :news="getMainPageNews.edges[0]"/>
+    <BlockLinks v-if="getMainPage" :links="getMainPage.mainpage"/>
     <OrganismsBlocks v-if="getMainPage" :blocks="getMainPage.blocks" />
     <OrganismsMainPageNews v-if="getMainPageNews.edges" :news="newsAll" />
   </main>

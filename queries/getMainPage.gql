@@ -19,6 +19,20 @@ query getMainPage(
           }
           fieldGroupName
         }
+        linkslist {
+          linkItem1 {
+            title
+            url
+          }
+          linkItem3 {
+            title
+            url
+          }
+          linkItem4 {
+            title
+            url
+          }
+        }
       }
       blocks {
         ... on CoreGroupBlock {

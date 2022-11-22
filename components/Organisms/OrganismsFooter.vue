@@ -84,11 +84,7 @@
               </li>
             </ul>
           </div>
-          <div>
-            <ul>
-              <li><NuxtLink to="/contacts">Контакти</NuxtLink></li>
-            </ul>
-          </div>
+          <div class="footer-menu__href"><NuxtLink to="/contacts" class="footer-menu__link mobile-link-standart">Контакти</NuxtLink></div>
         </div>
       </div>
     </div>
@@ -190,7 +186,7 @@ export default {
     grid-area: six;
   }
 }
-.footer-menu__title {
+.footer-menu__title, .mobile-link-standart {
   display: inline-block;
   margin-bottom: 16px;
   color: #ffffff;

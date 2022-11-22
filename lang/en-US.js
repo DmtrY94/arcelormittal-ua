@@ -11,6 +11,7 @@ export default async (context, locale) => {
         allNews: 'All news',
         related: 'Related content',
         download: 'Download',
-        loadMore: 'Load more'
+        loadMore: 'Load more',
+        links: 'Посилання'
     })
 }

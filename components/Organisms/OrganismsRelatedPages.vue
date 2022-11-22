@@ -64,7 +64,7 @@ export default {
 <style lang="scss">
 .related-pages {
   position: relative;
-  padding: 84px 0;
+  padding: 96px 0;
   background: #e6eaef;
   &__wrapper {
     display: grid;
@@ -85,6 +85,7 @@ export default {
     z-index: 1;
   }
   &__content {
+    position: relative;
     display: block;
     margin-top: 24px;
   }
@@ -103,6 +104,16 @@ export default {
     display: inline-block;
     border-bottom: 1px solid;
     margin-top: 18px;
+  }
+}
+@media (max-width: $mobile) {
+  .related-pages {
+    padding: 48px 0;
+  }
+  .related-pages__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 </style>
