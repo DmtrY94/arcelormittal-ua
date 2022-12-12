@@ -14,9 +14,7 @@
     </transition>
     <OrganismHeader />
     <OrganismsMenu />
-
-    <Nuxt />
-
+    <nuxt />
     <OrganismsFooter />
   </div>
 </template>
@@ -24,7 +22,6 @@
 export default {
   data() {
     return {
-      test: this.$route.name,
       hide: true,
     }
   },

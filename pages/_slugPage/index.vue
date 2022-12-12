@@ -9,6 +9,7 @@
     />
     <OrganismsBlocks :blocks="getPages.translation.blocks" />
   </main>
+  <div v-else></div>
 </template>
 <script>
 import getPages from '@/queries/getPages'

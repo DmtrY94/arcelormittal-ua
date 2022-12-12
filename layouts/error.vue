@@ -1,5 +1,10 @@
 <template>
   <div class="container-error">
+     <AtomsCoverImage
+     
+      title="Помилка"
+    
+    />
     <div class="page-not-found">
       <div class="heading-error">
         <span class="heading-error__number">404</span>
@@ -46,25 +51,5 @@ export default {
   font-size: 120px;
   line-height: 100%;
   font-weight: 800;
-  -webkit-text-fill-color: transparent;
-  color: rgb(255, 55, 0);
-  background: radial-gradient(
-    84.44% 89.85% at 11.91%,
-    at 17.87%,
-    #72017e 0%,
-    #ff263b 64.19%,
-    #fd7f45 100%
-  );
-  background: radial-gradient(
-    84.44% 89.85% at 11.91% 17.87%,
-    #72017e 0%,
-    #ff263b 64.19%,
-    #fd7f45 100%
-  );
-  -webkit-background-clip: text;
-}
-.heading-error__text {
-  font-size: 28px;
-  color: var(--color);
 }
 </style>

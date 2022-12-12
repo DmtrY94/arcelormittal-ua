@@ -18,7 +18,16 @@ export default {
   ],
 
   router: {
-    trailingSlash: false
+    extendRoutes(routes, resolve) {
+      setTimeout(()=> {
+        routes.push({
+          name: 'custom',
+          path: '*',
+          component: resolve(__dirname, 'pages/404.vue'),
+          redirect: '/404/'
+        })
+      })
+    }
   },
 
   styleResources: {

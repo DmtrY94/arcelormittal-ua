@@ -50,7 +50,7 @@
                 {{ item.node.label }}
               </div>
             </div>
-            
+
             <ul
               v-show="activeItemIndex == index"
               class="footer-menu__block-inf"
@@ -67,10 +67,7 @@
                 >
               </li>
             </ul>
-            <ul
-              v-if="$device.isDesktop"
-              class="footer-menu__block-inf"
-            >
+            <ul v-if="$device.isDesktop" class="footer-menu__block-inf">
               <li
                 v-for="childItem in item.node.childItems.edges"
                 :key="childItem.node.id"
@@ -83,8 +80,15 @@
                 >
               </li>
             </ul>
+            <div v-else></div>
           </div>
-          <div class="footer-menu__href"><NuxtLink to="/contacts" class="footer-menu__link mobile-link-standart">Контакти</NuxtLink></div>
+          <div class="footer-menu__href">
+            <NuxtLink
+              to="/contacts"
+              class="footer-menu__link mobile-link-standart"
+              >Контакти</NuxtLink
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -186,7 +190,8 @@ export default {
     grid-area: six;
   }
 }
-.footer-menu__title, .mobile-link-standart {
+.footer-menu__title,
+.mobile-link-standart {
   display: inline-block;
   margin-bottom: 16px;
   color: #ffffff;

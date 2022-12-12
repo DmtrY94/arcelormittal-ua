@@ -15,6 +15,7 @@
       :slug-parent="this.$route.params.slugPage"
     />
   </main>
+  <div v-else></div>
 </template>
 <script>
 import getPages from '@/queries/getPages'
@@ -32,7 +33,7 @@ export default {
       },
       prefetch: ({ route }) => {
         return {
-          uri: route.params.slugPage,
+          uri: `${route.params.slugPage}/${route.params.childSlugPage}`,
         }
       },
       result(result) {
