@@ -10,7 +10,7 @@
         <div class="wrapper-block__content">
           <h3 class="wrapper-block__title">{{ getManagement.title }}</h3>
           <p class="wrapper-block__label">
-            {{ getManagement.ManagementPosition.position }}
+            {{ getManagement.managementPosition.position }}
           </p>
           <div v-html="getManagement.content" class="wrapper-block__text"></div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="$apollo.error" class="container-error">error</div>
-  <AtomsLoading v-else-if="$apollo.loading" type="cards-page-news" />
+  <AtomsLoading v-else-if="getAllNews === null" type="cards-page-news" />
   <main v-else-if="getAllNews">
     <AtomsCoverImage :title="`${$t('pageAllNews')}`" />
     <div v-if="getAllNews" class="container">
@@ -15,7 +15,9 @@
           class="list-container__button-block"
           @click="showMores"
         >
+          <div v-if="$apollo.queries.getAllNews.loading">Loading...</div>
           <AtomButton
+            v-else
             :button-name="`${$t('loadMore')}`"
             button-with="254px"
             button-link="none"
@@ -53,6 +55,14 @@ export default {
           after: null,
         }
       },
+      result(result) {
+        if (result.data.getAllNews.edges.length === 0) {
+          this.$root.error({ statusCode: 404, message: 'Article Not Found' })
+        }
+      },
+      error() {
+        this.$root.error({ statusCode: 404, message: 'Error 400. Bad request' })
+      },
       update(data) {
         return data.getAllNews
       },
@@ -81,6 +91,39 @@ export default {
         },
       })
     },
+  },
+  head() {
+    return {
+      title: "Новини | АрселорМіттал Кривий Ріг",
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://metalurg.online/',
+        },
+      ],
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.getMainPage?.seo?.metaDesc,
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.getMainPage?.seo?.title,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.getMainPage?.seo?.metaDesc,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.getMainPage?.seo?.opengraphImage?.sourceUrl,
+        },
+      ],
+    }
   },
 }
 </script>

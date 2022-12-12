@@ -23,7 +23,7 @@
                 :to="menuParent.node.path"
                 class="menu-desktop-heading__link"
               >
-                {{$t('goToPage')}}
+                {{ $t('goToPage') }}
               </NuxtLink>
             </div>
           </div>
@@ -45,7 +45,7 @@
                       isOpenChild === childItem.node.id,
                   }"
                 >
-                  <span> {{ childItem.node.label }}</span>
+                  <span @click="$emit('mouseleave')"> {{ childItem.node.label }}</span>
                   <span
                     v-if="childItem.node.childItems.edges.length != 0"
                     class="header-menu__icon"
@@ -109,7 +109,7 @@ export default {
       window.clearTimeout(this.$options.valueTimeOut)
       this.$options.valueTimeOut = window.setTimeout(() => {
         this.isOpenChild = paramID
-      }, 10)
+      }, 0)
     },
     mouseleave() {
       window.clearTimeout(this.$options.valueTimeOut)
@@ -207,16 +207,32 @@ export default {
 .menu-desktop-heading__text {
   display: block;
   margin-top: 22px;
-  font-size: 18px;
+  margin-right: 32px;
+  font-size: 16px;
   line-height: 150%;
-  max-width: 230px;
 }
 .menu-desktop-heading__link {
   display: inline-block;
   margin-top: 24px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid;
+  padding-bottom: 2px;
   font-size: 18px;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-position: 0px 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  &:hover {
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(currentColor),
+      to(currentColor)
+    );
+    background-image: linear-gradient(currentColor, currentColor);
+    color: var(--color-primary);
+    -webkit-animation: line 0.25s ease-in-out;
+    animation: line 0.25s ease-in-out;
+  }
 }
 .test {
   position: relative;

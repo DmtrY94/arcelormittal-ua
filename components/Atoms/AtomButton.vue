@@ -97,7 +97,7 @@ export default {
 <style lang="scss">
 .button-content {
   z-index: 0;
-  background: transparent;
+  background: transparent !important;
   overflow: hidden;
   position: relative;
   display: flex;

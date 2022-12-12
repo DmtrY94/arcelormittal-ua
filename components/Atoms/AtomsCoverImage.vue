@@ -4,7 +4,6 @@
       <figure v-if="image" class="cover-image__figure">
         <nuxt-picture
           :src="image.node.sourceUrl"
-          loading="lazy"
           class="cover-image__picture"
           :alt="image.node.altText"
           :imgAttrs="{
@@ -23,7 +22,6 @@
       <figure v-else>
         <nuxt-picture
           src="/images/images-null.png"
-          loading="lazy"
           class="cover-image__picture"
           alt="test"
           :imgAttrs="{
@@ -37,7 +35,7 @@
     <div class="hero-content" :class="[newsPage ? 'hero-content--news' : '']">
       <div class="container">
         <div class="hero-content__left">
-          <MoleculesBreadcrumbs :slug1="title" :parent="parent" />
+          <MoleculesBreadcrumbs :slug1="title" :parent="parent" :breadcrumbs="breadcrumbs" />
           <div v-if="newsPage" class="hero-content-news__header">
             <div
               v-if="this.$i18n.locale == 'uk'"
@@ -67,6 +65,7 @@ export default {
     image: Object,
     parent: {},
     date: {},
+    breadcrumbs: {}
   },
   data() {
     return {

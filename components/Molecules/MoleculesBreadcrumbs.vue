@@ -1,6 +1,11 @@
 <template>
   <nav class="breadcrumbs-container">
-    <ul class="breadcrumbs-list">
+    <ul v-if="breadcrumbs" class="breadcrumbs-list">
+      <li v-for="item in breadcrumbs" :key="item" class="breadcrumbs-item">
+        <AtomsCutBreadcrumbs :url="item.url" :text="item.text" />
+      </li>
+    </ul>
+    <ul v-else class="breadcrumbs-list">
       <li class="breadcrumbs-item">
         <NuxtLink :to="localePath('/')" class="breadcrumbs-link">
           {{ $t('breadCrumbMain') }}
@@ -44,6 +49,7 @@ export default {
   props: {
     slug1: {},
     parent: {},
+    breadcrumbs: {},
   },
   data() {
     return {
@@ -94,6 +100,9 @@ export default {
     content: none;
     display: none;
   }
+  &:last-child span {
+    color: rgba(255, 255, 255, 0.6);
+  }
 }
 .breadcrumbs-link {
   white-space: nowrap;
@@ -103,6 +112,7 @@ export default {
   &--noactive {
     color: rgba(255, 255, 255, 0.6);
   }
+  
 }
 @media (max-width: $mobile) {
   .breadcrumbs-container {

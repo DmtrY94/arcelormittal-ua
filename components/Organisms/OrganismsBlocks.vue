@@ -39,6 +39,12 @@
       <div v-else-if="block.__typename == 'CoreQuoteBlock'" class="quote-block">
         <CoreQuoteBlock :attributes="block.attributes" />
       </div>
+      <div v-else-if="block.__typename == 'CoreImageBlock'">
+        <CoreImageBlock :attributes="block.attributes" />
+      </div>
+      <div v-else-if="block.__typename == 'CoreButtonsBlock'">
+        <CoreButtonsBlock :attributes="block" />
+      </div>
     </section>
   </div>
 </template>

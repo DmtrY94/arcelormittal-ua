@@ -11,9 +11,9 @@
             <nuxt-picture
               :src="image.mediaItem.node.link"
               loading="lazy"
-              class="image-element__picture"
+              class="slider-content__picture"
               :imgAttrs="{
-                class: 'image-element__img',
+                class: 'slider-content__img',
                 style: 'display:block',
                 'data-my-data': 'my-value',
               }"
@@ -134,6 +134,9 @@ export default {
 }
 .slider-content {
   position: relative;
+  &__picture {
+    position: relative;
+  }
   img {
     max-width: 100%;
     max-height: 460px;

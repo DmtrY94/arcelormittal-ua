@@ -13,15 +13,6 @@
             #460a78 0%,
             #ff263b 64.19%,
             #fd7f45 100%);
-
-    --padding-8: 8px;
-    --padding-16: 16px;
-    --padding-24: 24px;
-    --padding-32: 32px;
-    --padding-48: 48px;
-    --padding-64: 64px;
-    --padding-80: 80px;
-    --padding-96: 96px;
 }
 
 @font-face {
@@ -206,7 +197,7 @@ textarea {
 }
 
 input::placeholder {
-    color: rgba(0, 0, 0, 0.28)
+    color: rgba(255, 255, 255, 0.16)
 }
 
 

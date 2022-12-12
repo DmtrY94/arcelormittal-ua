@@ -1,5 +1,14 @@
 query getPages($uri: String, $locale: LanguageCodeEnum!) {
   getPages: pageBy(uri: $uri) {
+    featuredImage {
+      node {
+        sourceUrl(size: _1536X1536)
+        uri
+        mediaItemUrl
+        caption
+        altText
+      }
+    }
     translation(language: $locale) {
       id
       title
@@ -165,12 +174,44 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
             }
           }
         }
+        ... on CoreButtonsBlock {
+          saveContent
+          innerBlocks {
+            ... on CoreButtonBlock {
+              attributes {
+                ... on CoreButtonBlockAttributes {
+                  align
+                  anchor
+                  style
+                  rel
+                  placeholder
+                  lock
+                  linkTarget
+                  gradient
+                  fontSize
+                  fontFamily
+                  className
+                  backgroundColor
+                  width
+                  url
+                  title
+                  textColor
+                  text
+                }
+              }
+            }
+          }
+        }
       }
       seo {
         title
         metaDesc
         opengraphImage {
           sourceUrl
+        }
+        breadcrumbs {
+          text
+          url
         }
       }
     }

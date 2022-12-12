@@ -1,6 +1,7 @@
 export default async (context, locale) => {
     return await Promise.resolve({
         ArcelorMittal: 'ArcelorMittal',
+        ArcKR: 'ArcelorMittal Kryvyi Rih',
         goToPage: 'Go to page',
         pageAllNews: 'News',
         breadCrumbMain: 'Homepage',
@@ -12,6 +13,8 @@ export default async (context, locale) => {
         related: 'Related content',
         download: 'Download',
         loadMore: 'Load more',
-        links: 'Посилання'
+        links: 'Посилання',
+        searchPlaceholder: 'Search',
+        searchResults: 'results'
     })
 }

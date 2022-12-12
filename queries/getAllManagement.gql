@@ -7,7 +7,7 @@ query getAllManagement(
         id
         title
         slug
-        ManagementPosition {
+        managementPosition {
           position
         }
         featuredImage {

@@ -17,6 +17,9 @@ export default {
     '@/assets/scss/_variables.scss'
   ],
 
+  router: {
+    trailingSlash: false
+  },
 
   styleResources: {
     scss: ['@/assets/scss/*.scss']

@@ -1,6 +1,7 @@
 <template>
-  <AtomsLoading v-if="$apollo.loading" type="page" />
-  <main v-else class="page-content">
+  <div v-if="$apollo.error" class="container-error">error</div>
+  <AtomsLoading v-else-if="$apollo.loading" type="page" />
+  <main v-else-if="getNews" class="page-content">
     <AtomsCoverImage
       v-if="getNews"
       :title="getNews.title"
@@ -36,6 +37,11 @@ export default {
         return {
           slug: this.$route.params.id,
           locale: this.$i18n.locale.toUpperCase(),
+        }
+      },
+      result(result) {
+        if (result.data.getNews.translation === null) {
+          this.$root.error({ statusCode: 404, message: 'Article Not Found' })
         }
       },
       error() {

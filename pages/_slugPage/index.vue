@@ -1,12 +1,13 @@
 <template>
-  <AtomsLoading v-if="$apollo.loading" type="page" />
-  <main v-else class="page-content">
+  <div v-if="$apollo.error">error</div>
+  <AtomsLoading v-else-if="$apollo.loading" type="page" />
+  <main v-else-if="getPages" class="page-content">
     <AtomsCoverImage
-      v-if="getPages"
       :image="getPages.featuredImage"
-      :title="getPages.title"
+      :title="getPages.translation.title"
+      :breadcrumbs="getPages.translation.seo.breadcrumbs"
     />
-    <OrganismsBlocks v-if="getPages" :blocks="getPages.blocks" />
+    <OrganismsBlocks :blocks="getPages.translation.blocks" />
   </main>
 </template>
 <script>
@@ -23,17 +24,30 @@ export default {
           locale: this.$i18n.locale.toUpperCase(),
         }
       },
+      prefetch: ({ route }) => {
+        return {
+          uri: route.params.slugPage,
+        }
+      },
+      result(result) {
+        if (result.data.getPages === null) {
+          this.$root.error({ statusCode: 404, message: 'Article Not Found' })
+        }
+      },
       error() {
         this.$root.error({ statusCode: 404, message: 'Error 400. Bad request' })
       },
       update(data) {
-        return data.getPages.translation
+        return data.getPages
       },
     },
   },
+  mounted() {
+    console.log(this.getPages)
+  },
   head() {
     return {
-      title: this.getPages?.seo?.title,
+      title: this.getPages?.translation?.seo?.title,
       link: [
         {
           rel: 'canonical',
@@ -44,22 +58,22 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.getPages?.seo?.metaDesc,
+          content: this.getPages?.translation?.seo?.metaDesc,
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: this.getPages?.seo?.title,
+          content: this.getPages?.translation?.seo?.title,
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: this.getPages?.seo?.metaDesc,
+          content: this.getPages?.translation?.seo?.metaDesc,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.getPages?.seo?.opengraphImage?.sourceUrl,
+          content: this.getPages?.translation?.seo?.opengraphImage?.sourceUrl,
         },
       ],
     }

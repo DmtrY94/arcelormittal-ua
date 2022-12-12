@@ -1,14 +1,14 @@
 <template>
   <section class="page-header hero-search">
     <div class="page-header-search__container container">
-      <p class="page-header-search__intro">17 результатів</p>
+      <p class="page-header-search__intro">17 {{ $t('searchResults') }}</p>
       <h1 class="page-header__title page-header__title--has-search">
         <span class="page-header-search__search"><TheSearch /></span>
         <input
           type="text"
           class="search__input"
           v-model="searchText"
-          placeholder="Пошук"
+          :placeholder="`${ $t('searchPlaceholder') }`"
         />
         <span
           v-show="searchText"
@@ -45,14 +45,14 @@ export default {
 <style lang="scss">
 .hero-search {
   position: relative;
-  padding-top: 76px;
-  background: #f1e7f4;
+  margin-top: 76px;
+  background: var(--color);
   min-height: calc(238px + 76px);
   .search__input {
     position: relative;
     background: none;
     border: 0;
-    border-bottom: 2px solid var(--color);
+    border-bottom: 2px solid var(--color-revers);
     color: inherit;
     padding-right: 40px;
     padding-left: 32px;
@@ -60,7 +60,7 @@ export default {
     font-size: 50px;
     font-weight: bold;
     line-height: 62px;
-    color: var(--color);
+    color: var(--color-revers);
     &:focus {
       border-color: var(--color-primary);
     }
@@ -80,15 +80,18 @@ export default {
   &__intro {
     margin-bottom: 32px;
     font-size: 21px;
+    color: #ffffff;
   }
   &__search {
     position: absolute;
     left: 0;
+    color: #ffffff;
   }
   &__clear {
     position: absolute;
     right: 0;
     cursor: pointer;
+    color: #ffffff;
   }
 }
 </style>

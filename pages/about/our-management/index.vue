@@ -28,7 +28,7 @@
           <div class="management-cards__content">
             <h5 class="management-cards__title">{{ card.node.title }}</h5>
             <p class="management-cards__position">
-              {{ card.node.ManagementPosition.position }}
+              {{ card.node.managementPosition.position }}
             </p>
             <NuxtLink
               :to="localePath(`/about/our-management/${card.node.translation.slug}`)"

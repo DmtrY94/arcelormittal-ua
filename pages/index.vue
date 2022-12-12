@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
 import getMainPageNews from '@/queries/getMainPageNews'
 import getMainPage from '@/queries/getMainPage'
 
