@@ -18,7 +18,6 @@ export default {
   apollo: {
     getPages: {
       query: getPages,
-      prefetch: true,
       variables() {
         return {
           uri: this.$route.params.slugPage,

@@ -2,7 +2,7 @@
   <div class="site-content">
     <section
       v-for="block in blocks"
-      :key="block.__typename"
+      :key="block.order"
       class="ar-block-container"
     >
       <!-- <div v-html="block.saveContent"></div>-->

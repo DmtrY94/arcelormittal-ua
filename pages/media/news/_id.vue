@@ -3,12 +3,11 @@
   <AtomsLoading v-else-if="$apollo.loading" type="page" />
   <main v-else-if="getNews" class="page-content">
     <AtomsCoverImage
-      v-if="getNews"
       :title="getNews.title"
       :image="getNews.featuredImage"
       :date="getNews.date"
     />
-    <OrganismsBlocks v-if="getNews" :blocks="getNews.blocks" />
+    <OrganismsBlocks :blocks="getNews.blocks" />
     <div v-if="this.$i18n.locale == 'uk'" class="banner-block__news">
       <div class="container">
         <div class="banner-block-news__wrapper">

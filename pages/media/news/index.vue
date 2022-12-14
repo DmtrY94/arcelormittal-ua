@@ -3,7 +3,7 @@
   <AtomsLoading v-else-if="getAllNews === null" type="cards-page-news" />
   <main v-else-if="getAllNews">
     <AtomsCoverImage :title="`${$t('pageAllNews')}`" />
-    <div v-if="getAllNews" class="container">
+    <div class="container">
       <div class="allnews-page">
         <MoleculesNewsCard
           v-for="post in getAllNews.edges"
@@ -29,6 +29,7 @@
       </div>
     </div>
   </main>
+  <div v-else></div>
 </template>
 <script>
 import getAllNews from '@/queries/getPageAllNews'

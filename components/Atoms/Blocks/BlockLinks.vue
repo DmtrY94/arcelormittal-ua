@@ -11,8 +11,7 @@
             <NuxtLink :to="urlRemove"  class="section-links__item">
               <span class="links-item__title">
                 {{ links.linkslist.linkItem1.title }}
-                {{links.linkslist.linkItem1.url}}
-                {{urlRemove}}
+               
               </span>
               <span class="links-item__icon"><TheArrow /></span>
             </NuxtLink>

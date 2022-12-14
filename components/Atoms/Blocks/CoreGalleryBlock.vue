@@ -10,7 +10,6 @@
           <div class="slider-content">
             <nuxt-picture
               :src="image.mediaItem.node.link"
-              loading="lazy"
               class="slider-content__picture"
               :imgAttrs="{
                 class: 'slider-content__img',
@@ -82,6 +81,7 @@ export default {
 .slider-block {
   background: var(--text-secondary);
   padding: 96px 0;
+  margin-bottom: 48px;
   overflow: hidden;
   &__controls {
     display: flex;

@@ -15,6 +15,7 @@ export default async (context, locale) => {
         loadMore: 'Показати більше',
         links: 'Посилання',
         searchPlaceholder: 'Пошук',
-        searchResults: 'результатів'
+        searchResults: 'результатів',
+        notFound: 'Такої сторінки не існує'
     })
 }

@@ -10,7 +10,7 @@ query getMainPage(
         excerpt
         featuredImage {
           node {
-            sourceUrl(size: _1536X1536)
+            sourceUrl(size: MEDIUM_LARGE)
             uri
             mediaItemUrl
             caption

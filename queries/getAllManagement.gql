@@ -7,12 +7,12 @@ query getAllManagement(
         id
         title
         slug
-        managementPosition {
+        ManagementPosition {
           position
         }
         featuredImage {
           node {
-            sourceUrl(size: _1536X1536)
+            sourceUrl(size: MEDIUM_LARGE)
             uri
             mediaItemUrl
             caption

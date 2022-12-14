@@ -41,7 +41,7 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
               title
               featuredImage {
                 node {
-                  sourceUrl(size: _1536X1536)
+                  sourceUrl(size: MEDIUM_LARGE)
                   uri
                   mediaItemUrl
                   caption
