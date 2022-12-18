@@ -3,7 +3,7 @@
   <AtomsLoading v-else-if="$apollo.loading" type="cards-page" />
   <main v-else-if="getAllManagement" class="page-content">
     <AtomsCoverImage :title="`${$t('pageAllManagement')}`" />
-    <div v-if="getAllManagement" class="container">
+    <div v-if="!$apollo.loading" class="container">
       <div class="allmanagement-page">
         <div
           v-for="card in getAllManagement.edges"

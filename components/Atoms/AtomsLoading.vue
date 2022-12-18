@@ -147,12 +147,12 @@ export default {
     }
   }
   &-cover {
-    background: #F2F2F2;
+    background: #000000;
     position: relative;
     width: 100%;
     min-height: 632px;
     overflow: hidden;
-    z-index: 0;
+    z-index: 1;
     &__video {
       height: calc(100vh - 76px);
     }

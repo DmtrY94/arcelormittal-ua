@@ -1,29 +1,74 @@
 <template>
   <div class="large-card">
-    {{loading}}
-    <div v-if="post.featuredImage" class="large-card__image">
-      <AtomsImage :image="post.featuredImage.node" />
+    <div class="large-card__image">
+      <AtomsImage v-if="post.featuredImage" :image="post.featuredImage.node" />
+      <figure v-else class="image-element">
+        <nuxt-picture
+          src="/images/images-null.png"
+          loading="lazy"
+          class="image-element__picture"
+          alt="test"
+          :imgAttrs="{
+            class: 'image-element__img',
+            style: 'display:block',
+            'data-my-data': 'my-value',
+          }"
+        />
+      </figure>
     </div>
     <div class="large-card__content">
+      <div class="large-card__footer">
+        <div class="card-type">
+          <span v-if="post.contentTypeName === 'news'">Новини</span>
+          <span v-else-if="post.contentTypeName === 'management'"
+            >Наш менеджмент</span
+          >
+        </div>
+      </div>
       <div class="large-card__title">
         <h4 class="Heading-h4">{{ post.title }}</h4>
       </div>
-      <div v-if="post.excerpt" class="large-card__excerpt" v-html="post.excerpt" />
+      <div
+        v-if="post.excerpt"
+        class="large-card__excerpt"
+        v-html="post.excerpt"
+      />
       <div class="large-card__footer">
-        <client-only>
-          <div v-if="this.$i18n.locale == 'uk'" class="article-item__footer-data">
+        <client-only v-if="post.contentTypeName === 'news'">
+          <div
+            v-if="this.$i18n.locale == 'uk'"
+            class="article-item__footer-data"
+          >
             {{ $dateFns.format(post.date, 'd MMMM yyyy', { locale: 'uk' }) }}
           </div>
           <div v-else class="article-item__footer-data">
             {{ $dateFns.format(post.date, 'd MMMM yyyy', { locale: 'en-US' }) }}
           </div>
         </client-only>
+        <div v-else-if="post.contentTypeName === 'management'">
+          <p class="wrapper-block__label">
+            {{ post.ManagementPosition.position }}
+          </p>
+        </div>
+        <div>
+          <NuxtLink
+            v-if="post.contentTypeName === 'news'"
+            :to="localePath(`/media/news/${post.translation.slug}`)"
+            class="large-card__link"
+          ></NuxtLink>
+          <NuxtLink
+            v-else-if="post.contentTypeName === 'management'"
+            :to="localePath(`/about/our-management/${post.translation.slug}`)"
+            class="large-card__link"
+          ></NuxtLink>
+          <NuxtLink
+            v-else-if="post.contentTypeName === 'page'"
+            :to="localePath(post.translation.uri)"
+            class="large-card__link"
+          ></NuxtLink>
+        </div>
       </div>
     </div>
-    <NuxtLink
-      :to="localePath(`/media/news/${post.translation.slug}`)"
-      class="large-card__link"
-    ></NuxtLink>
   </div>
 </template>
 <script>
@@ -32,7 +77,6 @@ import AtomsImage from '@/components/Atoms/AtomsImage.vue'
 export default {
   props: {
     post: {},
-    loading: {},
   },
   components: {
     AtomsImage,
@@ -78,8 +122,8 @@ export default {
 }
 .large-card__footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .large-card__icon-podcast {
   position: absolute;
@@ -98,6 +142,14 @@ export default {
     left: 0;
     z-index: 2;
     content: '';
+  }
+}
+
+.card-type {
+  margin-top: 24px;
+  span {
+    font-size: 18px;
+    color: var(--color-primary);
   }
 }
 @media (max-width: 1024px) {

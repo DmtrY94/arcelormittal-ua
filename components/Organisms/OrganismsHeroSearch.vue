@@ -1,14 +1,18 @@
 <template>
   <section class="page-header hero-search">
     <div class="page-header-search__container container">
-      <p class="page-header-search__intro">17 {{ $t('searchResults') }}</p>
+      <MoleculesBreadcrumbs :slug1="`${$t('searchPlaceholder')}`" />
+      <p class="page-header-search__intro">
+        {{ results }} {{ $t('searchResults') }}
+      </p>
       <h1 class="page-header__title page-header__title--has-search">
         <span class="page-header-search__search"><TheSearch /></span>
         <input
           type="text"
           class="search__input"
           v-model="searchText"
-          :placeholder="`${ $t('searchPlaceholder') }`"
+          :placeholder="`${$t('searchPlaceholder')}`"
+          @keyup.enter="submitSearch"
         />
         <span
           v-show="searchText"
@@ -24,8 +28,17 @@
 export default {
   props: {
     searchText: {},
+    results: {},
   },
   methods: {
+    submitSearch() {
+      this.$nuxt.$options.router.push(
+        this.localePath({
+          name: 'search',
+          query: { searchText: this.searchText },
+        })
+      )
+    },
     clearInput() {
       this.searchText = ''
     },
@@ -75,9 +88,11 @@ export default {
 .page-header-search {
   &__container {
     position: relative;
-    padding-top: 64px;
+    padding-top: 24px;
   }
   &__intro {
+    display: block;
+    margin-top: 48px;
     margin-bottom: 32px;
     font-size: 21px;
     color: #ffffff;

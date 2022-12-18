@@ -29,7 +29,9 @@
       </div>
     </div>
   </main>
-  <div v-else></div>
+  <main v-else>
+    <AtomsLoading type="cards-page-news" />
+  </main>
 </template>
 <script>
 import getAllNews from '@/queries/getPageAllNews'

@@ -1,0 +1,86 @@
+query getSearch(
+    $locale: LanguageCodeFilterEnum,  
+    $search: String, 
+    $first: Int,
+    $after: String,
+  ) {
+  getSearch: contentNodes(first: $first,
+        after: $after, where: {search: $search, language: $locale}) {
+    edges {
+      node {
+        slug
+        contentTypeName
+        ... on Management {
+            id
+            title
+            slug
+            ManagementPosition {
+                position
+            }
+            featuredImage {
+                node {
+                    sourceUrl(size: MEDIUM_LARGE)
+                    uri
+                    mediaItemUrl
+                    caption
+                    altText
+                }
+            }
+            translation(language: UK) {
+                slug
+            }
+        }
+        ... on News {
+            id
+            title
+            slug
+            date
+            excerpt
+            featuredImage {
+                node {
+                    sourceUrl(size: MEDIUM_LARGE)
+                    uri
+                    mediaItemUrl
+                    caption
+                    altText
+                }
+            }
+            translation(language: UK) {
+                slug
+            }
+        }
+        ... on Page {
+            id
+            title
+            date
+            slug
+            parent {
+                node {
+                    slug
+                    seo {
+                        title
+                    }
+                }
+            }
+            featuredImage {
+                node {
+                    sourceUrl(size: _1536X1536)
+                    uri
+                    mediaItemUrl
+                    caption
+                    altText
+                }
+            }
+            translation(language: UK) {
+                uri
+            }
+        }
+      }
+      cursor
+    }
+    pageInfo {
+        endCursor
+        hasNextPage
+    }
+  }
+}
