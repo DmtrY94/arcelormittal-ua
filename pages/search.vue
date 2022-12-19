@@ -35,13 +35,11 @@
         />
 
         <div
-          v-if="showMoreEnabled || getSearch.pageInfo.hasNextPage"
+          v-if="getSearch.pageInfo.hasNextPage"
           @click="showMore"
           class="list-container__button-block"
         >
-          <div v-if="$apollo.queries.getSearch.loading" class="search-loading">
-            завантаженя
-          </div>
+          <div v-if="loadinge" class="search-loading">завантаженя</div>
           <div
             v-else-if="getSearch.edges.length === 0"
             class="page-search__start"
@@ -82,6 +80,7 @@ export default {
     getSearch: {
       query: getSearch,
       prefetch: true,
+      loadingKey: 'loadings',
       variables() {
         return {
           search: this.searchText || this.$route.query.searchText,
@@ -109,6 +108,7 @@ export default {
     },
     showMore() {
       this.$apollo.queries.getSearch.fetchMore({
+        loadingKey: 'loadinge',
         variables: {
           first: 6,
           search: this.searchText,
@@ -213,6 +213,17 @@ export default {
     color: #ffffff;
   }
 }
+.page-search__start {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  span {
+    font-size: 21px;
+    font-weight: 800;
+  }
+}
 @media (max-width: $mobile) {
   .search-page {
     display: flex;
@@ -220,6 +231,19 @@ export default {
     flex-wrap: nowrap;
     margin-top: 32px;
     margin-bottom: 64px;
+  }
+  .hero-search {
+    margin-top: 64px;
+  }
+  .hero-search .search__input {
+    font-size: 28px;
+    padding-right: 28px;
+  }
+  .page-header-search__search {
+    left: 15px;  
+  }
+  .page-header-search__clear {
+    right: 15px;
   }
 }
 </style>

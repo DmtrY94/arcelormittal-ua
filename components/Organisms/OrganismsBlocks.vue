@@ -75,6 +75,9 @@ export default {
 <style lang="scss">
 .ar-block-container {
   position: relative;
+  h2 {
+    margin-bottom: 32px;
+  }
   .alignfull {
   }
   .wp-block-media-text {
@@ -83,7 +86,6 @@ export default {
     }
   }
   .has-media-on-the-right {
-    flex-flow: row-reverse;
     .wp-block-media-text__content {
       margin-right: 8.33333%;
       margin-left: 0;
@@ -151,6 +153,15 @@ export default {
   .wp-block-buttons {
     margin-top: 48px;
   }
+  .wp-block-button__link {
+    background-image: none;
+    &:hover {
+      background-image: none;
+    }
+    &.has-text-color:hover {
+      color: #fff !important;
+    }
+  }
 }
 
 .container-management {
@@ -196,10 +207,52 @@ export default {
   padding: 48px 0;
 }
 @media (max-width: $mobile) {
+  .ar-block-container {
+    h2 {
+      font-size: 28px !important;
+      margin-bottom: 24px
+    }
+    .wp-block-columns {
+      gap: 0;
+      padding-top: 86px;
+      padding-bottom: 86px;
+    }
+  }
   .container-management {
     display: flex;
     flex-direction: column;
     align-items: inherit !important;
+  }
+  .ar-block-container .has-dark-background-color .has-media-on-the-right {
+    flex-direction: column-reverse;
+  }
+  .ar-block-container .is-vertically-aligned-center,
+  .ar-block-container .wp-block-columns {
+    flex-direction: column;
+  }
+  .ar-block-container .wp-block-column,
+  .ar-block-container .wp-block-buttons {
+    width: 100%;
+  }
+  .ar-block-container .wp-block-media-text__media {
+    padding-top: 86px;
+    padding-bottom: 0;
+    width: 100%;
+  }
+  .ar-block-container .wp-block-media-text__content {
+    padding-top: 24px;
+    width: 100%;
+  }
+  .ar-block-container .has-media-on-the-right .wp-block-media-text__content,
+  .ar-block-container .wp-block-media-text .wp-block-media-text__content {
+    margin: 0 15px;
+    padding-bottom: 86px;
+  }
+  .wp-block-button {
+    max-width: 100%;
+  }
+  .wp-block-button__link {
+    width: 100%;
   }
 }
 </style>

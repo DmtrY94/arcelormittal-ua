@@ -19,10 +19,12 @@
     <div class="large-card__content">
       <div class="large-card__footer">
         <div class="card-type">
-          <span v-if="post.contentTypeName === 'news'">Новини</span>
-          <span v-else-if="post.contentTypeName === 'management'"
-            >Наш менеджмент</span
-          >
+          <span v-if="post.contentTypeName === 'news'">{{
+            $t('pageAllNews')
+          }}</span>
+          <span v-else-if="post.contentTypeName === 'management'">{{
+            $t('pageAllManagement')
+          }}</span>
         </div>
       </div>
       <div class="large-card__title">
@@ -46,7 +48,7 @@
           </div>
         </client-only>
         <div v-else-if="post.contentTypeName === 'management'">
-          <p class="wrapper-block__label">
+          <p class="wrapper-block__label-search">
             {{ post.ManagementPosition.position }}
           </p>
         </div>
@@ -152,6 +154,11 @@ export default {
     color: var(--color-primary);
   }
 }
+
+.wrapper-block__label-search {
+  color: #000;
+}
+
 @media (max-width: 1024px) {
   .large-card {
     flex-direction: column;

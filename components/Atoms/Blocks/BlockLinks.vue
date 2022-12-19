@@ -70,4 +70,17 @@ export default {
   font-size: 21px;
   font-weight: 800;
 }
+@media (max-width: $mobile) {
+  .section-links {
+    padding: 86px 0;
+  }
+  .section-links__wrapper {
+    display: flex;
+    row-gap: 0;
+  }
+  .section-links__right,
+  .section-links__left {
+    width: 100%;
+  }
+}
 </style>
