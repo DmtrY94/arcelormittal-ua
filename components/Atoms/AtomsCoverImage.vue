@@ -72,6 +72,9 @@ export default {
       newsPage:
         this.$route.name === 'media-news-id___uk' ||
         this.$route.name === 'media-news-id___en',
+      newsPageAll: 
+        this.$route.name === 'media-news___uk' ||
+        this.$route.name === 'media-news___en',
     }
   },
   mounted() {

@@ -155,31 +155,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // Просим стили вырезать в отдельные файлы. Иначе css будет inline.
-    postcss: null,
-    loaders: {
-      vue: {
-        prettify: false
-      }
-    },
-    extractCSS: true,
-    html: {
-      minify: {
-        collapseBooleanAttributes: true,
-        decodeEntities: true,
-        minifyCSS: true,
-        minifyJS: true,
-        processConditionalComments: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-        trimCustomFragments: true,
-        useShortDoctype: true
-      }
-    },
-    splitChunks: {
-      layouts: true,
-      pages: true,
-      commons: true
-    },
+    
   },
 }

@@ -51,6 +51,11 @@
             <div class="loading-item__content"></div>
             <div class="loading-item__content"></div>
           </div>
+          <div class="loading__item">
+            <div class="loading-item__cover"></div>
+            <div class="loading-item__content"></div>
+            <div class="loading-item__content"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -86,6 +91,11 @@
       <div class="loading-cover loading-cover__video"></div>
       <div class="container">
         <div class="loading__cards">
+          <div class="loading__item">
+            <div class="loading-item__cover"></div>
+            <div class="loading-item__content"></div>
+            <div class="loading-item__content"></div>
+          </div>
           <div class="loading__item">
             <div class="loading-item__cover"></div>
             <div class="loading-item__content"></div>
@@ -169,15 +179,20 @@ export default {
   }
   &__item {
     position: relative;
-
     overflow: hidden;
+    &:last-child {
+      display: none;
+    }
   }
 }
 .loading-item {
+  &:last-child {
+    display: none;
+  }
   &__cover {
     overflow: hidden;
     position: relative;
-    background: #F2F2F2;
+    background: #f2f2f2;
     margin-bottom: 24px;
     &::before {
       display: block;
@@ -189,7 +204,7 @@ export default {
     height: 24px;
     margin-bottom: 16px;
     position: relative;
-    background: #F2F2F2;
+    background: #f2f2f2;
   }
 }
 
@@ -197,7 +212,7 @@ export default {
   &__image {
     overflow: hidden;
     position: relative;
-    background: #F2F2F2;
+    background: #f2f2f2;
     margin-bottom: 24px;
     width: calc(50% - 15px);
     &::before {
@@ -214,8 +229,8 @@ export default {
     .loading-text__item {
       width: 100%;
       &:nth-of-type(2n) {
-      width: 90%;
-    }
+        width: 90%;
+      }
     }
   }
 }
@@ -228,7 +243,7 @@ export default {
   &__item {
     width: 80%;
     height: 24px;
-    background: #F2F2F2;
+    background: #f2f2f2;
     margin-bottom: 24px;
     &:nth-of-type(2n) {
       width: 50%;
@@ -260,6 +275,14 @@ export default {
     left: 100%;
   }
 }
+@media (min-width: $mobile) and (max-width: 1180px) {
+  .loading__cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .loading__item:last-child {
+    display: block;
+  }
+}
 @media (max-width: $mobile) {
   .loading__cards {
     margin-top: 32px;
@@ -288,7 +311,8 @@ export default {
     display: flex;
     flex-direction: column-reverse;
   }
-  .loading-page-m__text, .loading-page-m__image {
+  .loading-page-m__text,
+  .loading-page-m__image {
     width: 100%;
   }
   .loading-page-m__image {

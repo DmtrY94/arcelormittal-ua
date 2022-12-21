@@ -5,7 +5,7 @@
         :button-name="item.attributes.text"
         button-with="300px"
         :button-link="item.attributes.url"
-      />
+      />{{ item.attributes.url }}
     </div>
   </div>
 </template>

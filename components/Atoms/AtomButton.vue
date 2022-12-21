@@ -72,6 +72,7 @@
         />
       </svg>
     </span>
+    {{urlDomain}}
   </NuxtLink>
 </template>
 <script>
@@ -92,6 +93,19 @@ export default {
     type: {},
     buttonA: {},
   },
+  computed: {
+    urlDomain() {
+      const url = this.buttonLink
+      const regex = url.match(/^(?!-)[A-Za-z0-9-]+([\-\.]{1}[a-z0-9]+)*\.[A-Za-z]{2,6}$/);  
+
+      if (regex == 'drive.google.com') {
+        return console.log(regex);
+      } else {
+        return console.log(regex)
+      }
+      
+    }
+  }
 }
 </script>
 <style lang="scss">

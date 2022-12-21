@@ -14,7 +14,7 @@
           : '',
       ]"
     >
-      <div class="header-desktop__container container">
+      <div v-if="!isSearch" class="header-desktop__container container">
         <NuxtLink :to="localePath('/')" class="header-desktop__logo">
           <TheLogoColor />
         </NuxtLink>
@@ -22,7 +22,7 @@
           class="header-navigation"
           :class="{ 'header-navigation--search': isSearch }"
         >
-          <ul v-if="!isSearch" class="header-navigation__list">
+          <ul class="header-navigation__list">
             <li
               v-for="item in menuParent"
               :key="item.node.id"
@@ -39,26 +39,6 @@
               />
             </li>
           </ul>
-          <div v-else class="header-search">
-            <TheSearch />
-            <input
-              type="search"
-              placeholder="Пошук"
-              class="input header-search__input"
-              name="searchText"
-              id="searchText"
-              v-model="searchText"
-              autocomplete="off"
-              @keyup.enter="submitSearch"
-            />
-            <span
-              v-show="searchText"
-              @click="clearInput"
-              class="hero-search-container__clear"
-            >
-              <TheClose />
-            </span>
-          </div>
         </nav>
         <div class="header-toolbar">
           <div
@@ -89,6 +69,27 @@
             <TheClose v-if="isOpenobile" />
             <TheMenu v-else />
           </div>
+        </div>
+      </div>
+      <div v-else class="header--search container">
+        <div class="header-search">
+          <TheSearch />
+          <input
+            type="search"
+            placeholder="Пошук"
+            class="input header-search__input"
+            name="searchText"
+            id="searchText"
+            v-model="searchText"
+            autocomplete="off"
+            @keyup.enter="submitSearch"
+          />
+          <span
+            @click="closeSearch()"
+            class="hero-search-container__clear"
+          >
+            <TheClose />
+          </span>
         </div>
       </div>
     </div>
@@ -250,6 +251,12 @@ export default {
   .header-toolbar__lang {
     border-right: 1px solid #000;
   }
+  .header-toolbar__menu {
+    border-left: 1px solid #212121;
+    svg {
+      color: var(--color);
+    }
+  }
 }
 .sticky-header {
   position: fixed;
@@ -320,6 +327,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 28px;
   &__input {
     display: block;
     width: 100%;
@@ -336,8 +344,18 @@ export default {
 .hero-search-container__clear {
   display: flex;
   cursor: pointer;
+  svg {
+    display: flex;
+    height: 16px;
+  }
 }
-
+@media (min-width: $mobile) and (max-width: 1280px) {
+  .header-navigation__link {
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 @media (max-width: $tablet) {
   .header-navigation {
     display: none;
@@ -350,10 +368,6 @@ export default {
       display: flex;
       color: #fff;
     }
-  }
-}
-@media (max-width: $mobile) {
-  .header {
   }
   .header-desktop {
     height: 64px;
@@ -394,6 +408,13 @@ export default {
   }
   .header-toolbar__search {
     margin-right: 16px;
+  }
+  .header-search {
+    margin-top: 23px;
+  }
+}
+@media (max-width: $mobile) {
+  .header {
   }
 }
 </style>

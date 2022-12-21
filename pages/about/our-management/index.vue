@@ -31,12 +31,22 @@
               {{ card.node.ManagementPosition.position }}
             </p>
             <NuxtLink
-              :to="localePath(`/about/our-management/${card.node.translation.slug}`)"
+              :to="
+                localePath(
+                  `/about/our-management/${card.node.translation.slug}`
+                )
+              "
               class="management-cards__more"
             >
               {{ $t('readMore') }}
             </NuxtLink>
           </div>
+          <NuxtLink
+            :to="
+              localePath(`/about/our-management/${card.node.translation.slug}`)
+            "
+            class="management-cards__link"
+          ></NuxtLink>
         </div>
       </div>
     </div>
@@ -86,6 +96,27 @@ export default {
       content: '';
     }
   }
+  &:hover {
+    .image-card__picture {
+      top: -8px;
+      right: -8px;
+      bottom: -8px;
+      left: -8px;
+    }
+    .management-cards__more {
+      background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(currentColor),
+        to(currentColor)
+      );
+      background-image: linear-gradient(currentColor, currentColor);
+      color: var(--color-primary);
+      -webkit-animation: line 0.25s ease-in-out;
+      animation: line 0.25s ease-in-out;
+    }
+  }
   &__title {
     display: block;
     margin-bottom: 16px;
@@ -97,8 +128,24 @@ export default {
     line-height: 120%;
   }
   &__more {
-    display: inline-block;
-    border-bottom: 1px solid;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    font-family: inherit;
+    padding-bottom: 2px;
+    text-decoration: none;
+  }
+  &__link {
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      content: '';
+    }
   }
 }
 
@@ -111,9 +158,12 @@ export default {
   overflow: hidden;
 }
 .image-card__picture {
-  display: flex;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.15s ease-in-out 0s;
 }
 .image-card__img {
   -o-object-fit: cover;
@@ -123,6 +173,11 @@ export default {
   object-position: center;
   width: 100%;
   height: 100%;
+}
+@media (min-width: $mobile) and (max-width: 1180px) {
+  .allmanagement-page {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (max-width: $mobile) {
   .allmanagement-page {

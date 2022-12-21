@@ -10,7 +10,7 @@
           </div>
           <div class="footer-block__bottom">
             <AtomButton
-              button-name="Гарячі лінії"
+              :button-name="`${$t('phoneFooter')}`"
               button-with="100%"
               button-link="/phone"
               type="white"

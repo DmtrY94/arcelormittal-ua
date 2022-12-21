@@ -143,11 +143,10 @@ export default {
     margin-bottom: 64px;
     flex-direction: column-reverse;
     &__content,
-    &__iamge {
+    &__image {
       width: 100%;
-    }
-    &__iamge {
       margin-bottom: 32px;
+      min-height: auto;
     }
     &__text {
       margin-top: 24px;

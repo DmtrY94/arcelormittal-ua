@@ -16,6 +16,7 @@ export default async (context, locale) => {
         links: 'Посилання',
         searchPlaceholder: 'Search',
         searchResults: 'results',
-        notFound: 'Page not found'
+        notFound: 'Page not found',
+        phoneFooter: 'Hot lines'
     })
 }

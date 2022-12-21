@@ -12,10 +12,15 @@
         />
         <div
           v-if="showMoreEnabled && getAllNews.pageInfo.hasNextPage"
-          class="list-container__button-block"
+          class="allnews-page__button-block"
           @click="showMores"
         >
-          <div v-if="$apollo.queries.getAllNews.loading">Loading...</div>
+          <div
+            v-if="$apollo.queries.getAllNews.loading"
+            class="allnews-page__spinner"
+          >
+            <TheLoading />
+          </div>
           <AtomButton
             v-else
             :button-name="`${$t('loadMore')}`"
@@ -97,7 +102,7 @@ export default {
   },
   head() {
     return {
-      title: "Новини | АрселорМіттал Кривий Ріг",
+      title: 'Новини | АрселорМіттал Кривий Ріг',
       link: [
         {
           rel: 'canonical',
@@ -142,6 +147,19 @@ export default {
   column-gap: 30px;
   flex-wrap: wrap;
 }
+.allnews-page__button-block {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.allnews-page__spinner {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: $mobile) and (max-width: 1180px) {
+  .allnews-page {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: $mobile) {
   .allnews-page {
     display: flex;
@@ -149,6 +167,11 @@ export default {
     flex-wrap: nowrap;
     margin-top: 32px;
     margin-bottom: 64px;
+  }
+  .allnews-page__button-block {
+    .button-content {
+      width: 100% !important;
+    }
   }
 }
 </style>
