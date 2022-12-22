@@ -17,6 +17,7 @@ export default async (context, locale) => {
         searchPlaceholder: 'Пошук',
         searchResults: 'результатів',
         notFound: 'Такої сторінки не існує',
-        phoneFooter: 'Гарячі лінії'
+        phoneFooter: 'Гарячі лінії',
+        adress: 'ПАТ «АрселорМіттал Кривий Ріг» 50095, Україна, Дніпропетровська область, Кривий Ріг, вул. Криворіжсталі (Орджонікідзе), 1'
     })
 }

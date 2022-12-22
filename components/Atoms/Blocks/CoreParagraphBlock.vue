@@ -23,5 +23,8 @@ export default {
       font-weight: 800;
     }
   }
+  em {
+    font-style: italic;
+  }
 }
 </style>

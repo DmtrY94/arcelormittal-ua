@@ -37,7 +37,7 @@
         <CoreFileBlock :attributes="block.attributes" />
       </div>
       <div v-else-if="block.__typename == 'CoreQuoteBlock'" class="quote-block">
-        <CoreQuoteBlock :attributes="block.attributes" />
+        <CoreQuoteBlock :attributes="block" />
       </div>
       <div v-else-if="block.__typename == 'CoreImageBlock'">
         <CoreImageBlock :attributes="block.attributes" />
@@ -205,7 +205,13 @@ export default {
 .quote-block {
   background-color: #f8f6f2;
   padding: 48px 0;
+  margin-bottom: 32px;
 }
+
+.ar-block-container:first-child .block-title {
+  margin-top: 0;
+}
+
 @media (max-width: $mobile) {
   .ar-block-container {
     h2 {

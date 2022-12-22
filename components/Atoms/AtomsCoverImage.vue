@@ -35,7 +35,11 @@
     <div class="hero-content" :class="[newsPage ? 'hero-content--news' : '']">
       <div class="container">
         <div class="hero-content__left">
-          <MoleculesBreadcrumbs :slug1="title" :parent="parent" :breadcrumbs="breadcrumbs" />
+          <MoleculesBreadcrumbs
+            :slug1="title"
+            :parent="parent"
+            :breadcrumbs="breadcrumbs"
+          />
           <div v-if="newsPage" class="hero-content-news__header">
             <div
               v-if="this.$i18n.locale == 'uk'"
@@ -49,6 +53,8 @@
             <h1 class="hero-content-news__title">
               {{ title }}
             </h1>
+
+            <AtomsShareNews :title="title" :baseUrl="baseUrl" :description="description" />
           </div>
           <h1 v-else class="hero-content__title">
             {{ title }}
@@ -65,14 +71,16 @@ export default {
     image: Object,
     parent: {},
     date: {},
-    breadcrumbs: {}
+    breadcrumbs: {},
+    baseUrl: {},
+    description: {}
   },
   data() {
     return {
       newsPage:
         this.$route.name === 'media-news-id___uk' ||
         this.$route.name === 'media-news-id___en',
-      newsPageAll: 
+      newsPageAll:
         this.$route.name === 'media-news___uk' ||
         this.$route.name === 'media-news___en',
     }
@@ -194,6 +202,7 @@ export default {
 
 .hero-content-news {
   &__header {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-grow: 1;

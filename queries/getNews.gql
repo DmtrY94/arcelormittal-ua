@@ -6,6 +6,7 @@ query getNews($slug: String, $locale: LanguageCodeEnum!) {
       slug
       date
       title
+      excerpt
       featuredImage {
           node {
             sourceUrl(size: _1536X1536)
@@ -43,6 +44,7 @@ query getNews($slug: String, $locale: LanguageCodeEnum!) {
               align
               anchor
               content
+              fontSize
             }
           }
         }
@@ -133,6 +135,11 @@ query getNews($slug: String, $locale: LanguageCodeEnum!) {
               textColor
               value
               style
+            }
+          }
+          innerBlocks {
+            ... on CoreParagraphBlock {
+              saveContent
             }
           }
         }

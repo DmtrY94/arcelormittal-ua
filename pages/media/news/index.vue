@@ -100,39 +100,36 @@ export default {
       })
     },
   },
-  head() {
-    return {
-      title: 'Новини | АрселорМіттал Кривий Ріг',
-      link: [
-        {
-          rel: 'canonical',
-          href: 'https://metalurg.online/',
-        },
-      ],
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.getMainPage?.seo?.metaDesc,
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: this.getMainPage?.seo?.title,
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: this.getMainPage?.seo?.metaDesc,
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content: this.getMainPage?.seo?.opengraphImage?.sourceUrl,
-        },
-      ],
+  computed: {
+    locale() {
+      return this.$i18n.localeProperties.code;
     }
   },
+  head() {
+    const heads = {
+      'uk': {
+        title: 'Новини | АрселорМіттал Кривий Ріг',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Home page description'
+          }
+        ],
+      },
+      'en': {
+        title: 'News | ArcelorMittal Kryvyi Rih',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Home page description'
+          }
+        ],
+      }
+    };
+    return heads[this.locale];
+  }
 }
 </script>
 <style lang="scss">

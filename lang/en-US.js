@@ -17,6 +17,7 @@ export default async (context, locale) => {
         searchPlaceholder: 'Search',
         searchResults: 'results',
         notFound: 'Page not found',
-        phoneFooter: 'Hot lines'
+        phoneFooter: 'Hot lines',
+        adress: 'РJSC "ArcelorMittal Kryvyi Rih" 50095, Ukraine, Dnepropetrovsk region, Kryviy Rih, Kryvorizhstal st. (Ordzhonikidze), 1'
     })
 }

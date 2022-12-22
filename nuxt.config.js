@@ -1,4 +1,8 @@
 export default {
+  
+  publicRuntimeConfig: {
+    myPublicURL: process.env.BASE_URL,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'arcelormittal-frontend',
@@ -10,7 +14,7 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/scss/main.scss',
@@ -35,7 +39,9 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/vue-social-sharing.js' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {

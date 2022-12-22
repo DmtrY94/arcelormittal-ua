@@ -80,6 +80,7 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
               align
               anchor
               content
+              fontSize
             }
           }
         }
@@ -171,6 +172,11 @@ query getPages($uri: String, $locale: LanguageCodeEnum!) {
               textColor
               value
               style
+            }
+          }
+          innerBlocks {
+            ... on CoreParagraphBlock {
+              saveContent
             }
           }
         }

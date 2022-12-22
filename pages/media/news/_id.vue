@@ -6,7 +6,10 @@
       :title="getNews.title"
       :image="getNews.featuredImage"
       :date="getNews.date"
+      :base-url="this.$config.myPublicURL"
+      :description="getNews.excerpt"
     />
+
     <OrganismsBlocks :blocks="getNews.blocks" />
     <div v-if="this.$i18n.locale == 'uk'" class="banner-block__news">
       <div class="container">

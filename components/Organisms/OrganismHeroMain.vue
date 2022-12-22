@@ -86,6 +86,19 @@ export default {
       left: 0;
       right: 0;
       z-index: 1;
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        height: calc(100vh - 76px);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+      }
     }
     &__title {
       max-width: 50%;

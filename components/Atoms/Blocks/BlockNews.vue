@@ -3,11 +3,14 @@
     <div class="container">
       <div class="section-news__wrapper">
         <div class="section-news__content">
-          <span class="section-news__date">
+          <span v-if="this.$i18n.locale == 'uk'" class="section-news__date">
             {{
               $dateFns.format(news.node.date, 'd MMMM yyyy', { locale: 'uk' })
             }}
           </span>
+          <span v-else class="section-news__date">{{
+            $dateFns.format(news.node.date, 'd MMMM yyyy', { locale: 'en-US' })
+          }}</span>
           <h3 class="section-news__title">{{ news.node.title }}</h3>
           <div class="section-news__label" v-html="news.node.excerpt"></div>
           <AtomButton
@@ -37,7 +40,7 @@ export default {
 </script>
 <style lang="scss">
 .section-news {
-  background: #E6EAEF;
+  background: #e6eaef;
   padding: 86px 0;
   &__wrapper {
     display: flex;
@@ -74,19 +77,20 @@ export default {
   }
 }
 @media (max-width: $mobile) {
-    .section-news {
-        &__wrapper {
-            flex-direction: column-reverse;
-        }
-        &__content, &__image {
-            width: 100%;
-        }
-        &__content {
-            margin-top: 24px;
-        }
-        .button-container {
-            width: 100% !important;
-        }
+  .section-news {
+    &__wrapper {
+      flex-direction: column-reverse;
     }
+    &__content,
+    &__image {
+      width: 100%;
+    }
+    &__content {
+      margin-top: 24px;
+    }
+    .button-container {
+      width: 100% !important;
+    }
+  }
 }
 </style>

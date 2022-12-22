@@ -18,8 +18,7 @@
             />
             <div class="">
               <p class="footer-adress">
-                ПАТ «АрселорМіттал Кривий Ріг» 50095, Україна, Дніпропетровська
-                область, Кривий Ріг, вул. Криворіжсталі (Орджонікідзе), 1
+                {{$t('adress')}}
               </p>
               <p class="footer-text">©{{ date }} ArcelorMittal Kryviy Rih</p>
             </div>

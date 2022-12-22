@@ -1,5 +1,5 @@
 <template>
-  <div class="file-block text-block-width">
+  <div v-if="attributes.fileName" class="file-block text-block-width">
     <div class="file-block__left">
       <div class="file-block__icon">
         <ThePdf v-if="fileType === 'pdf'" />
@@ -35,8 +35,8 @@ export default {
 </script>
 <style lang="scss">
 .file-block {
-  border-top: 1px solid;
-  padding-top: 32px;
+  border: 1px solid;
+  padding: 24px;
   width: 100%;
   display: flex;
   align-items: center;
